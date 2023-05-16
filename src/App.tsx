@@ -1,10 +1,13 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import NavigationBar from "./modules/navigationBar";
+import Navigation from "./modules/navigation";
+import { StatusBar } from "react-native";
+import { colors } from "./styles/themes";
 
 const App = () => (
     <NavigationContainer>
-        <NavigationBar />
+        <StatusBar barStyle={"light-content"} backgroundColor={colors.black}/>
+        <Navigation />
     </NavigationContainer>
 );
 
