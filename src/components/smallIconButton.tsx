@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useCallback, useState } from "react";
 import { StyleSheet, TouchableHighlight } from "react-native";
-import { colors } from "../styles/themes";
+import { darkColors } from "../styles/darkColors";
 import { SvgProps } from "react-native-svg";
 
 interface SmallIconButtonProps {
@@ -8,27 +8,26 @@ interface SmallIconButtonProps {
 }
 
 const SmallIconButton: React.FC<SmallIconButtonProps> = ({ Content }) => {
+  const [fillColor, setFillColor] = useState<string>(darkColors.white);
 
-    const [fillColor, setFillColor] = useState<string>(colors.white);
+  const toggleColor = useCallback((color: string) => setFillColor(color), []);
 
-    const toggleColor = useCallback((color: string) => setFillColor(color), [fillColor]);
-
-    return (
-        <TouchableHighlight
-            style={styles.button}
-            onPressIn={() => toggleColor(colors.orange)}
-            onPressOut={() => toggleColor(colors.white)}
-            onPress={() => console.log("hello world")}
-        >
-            <Content fill={fillColor} />
-        </TouchableHighlight>
-    );
+  return (
+    <TouchableHighlight
+      style={styles.button}
+      onPressIn={() => toggleColor(darkColors.orange)}
+      onPressOut={() => toggleColor(darkColors.white)}
+      onPress={() => console.log("hello world")}
+    >
+      <Content fill={fillColor} />
+    </TouchableHighlight>
+  );
 };
 
 const styles = StyleSheet.create({
-    button: {
-        borderRadius: 100
-    }
+  button: {
+    borderRadius: 100
+  }
 });
 
 export default SmallIconButton;
