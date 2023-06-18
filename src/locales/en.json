@@ -1,5 +1,9 @@
 {
   "translation": {
-    "string": "string"
+    "navigation": {
+      "workouts": "Workouts",
+      "exercises": "Exercises",
+      "account": "Account"
+    }
   }
 }

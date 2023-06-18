@@ -15,11 +15,18 @@ import WorkoutStats from "./components/workoutStats";
 import Timer from "./components/timer";
 import { Colors } from "../../types/colors";
 import useStyles from "../../hooks/useStyles";
-
+import useLocales from "../../hooks/useLocales";
 
 const Tab = createBottomTabNavigator();
 
+interface NavigationLocales {
+  workouts: string;
+  exercises: string;
+  account: string;
+}
+
 const Navigation = () => {
+  const locales = useLocales<NavigationLocales>("navigation");
 
   const { styles } = useStyles(createStyles);
   return (
@@ -35,27 +42,30 @@ const Navigation = () => {
       tabBarLabelStyle: styles.tabBarLabel
     }}>
       <Tab.Screen
-        name="Workouts"
+        name={"workouts"}
         component={Workouts}
         options={{
+          tabBarLabel: locales.workouts,
           tabBarIcon: ({ color }) => (
             <WorkoutLogo fill={color} width={30} height={30} />
           )
         }}
       />
       <Tab.Screen
-        name="Exercises"
+        name={"exercises"}
         component={Exercises}
         options={{
+          tabBarLabel: locales.exercises,
           tabBarIcon: ({ color }) => (
             <ExerciseLogo fill={color} width={40} height={40} />
           )
         }}
       />
       <Tab.Screen
-        name="Account"
+        name={"account"}
         component={Account}
         options={{
+          tabBarLabel: locales.account,
           tabBarIcon: ({ color }) => (
             <AccountLogo fill={color} width={34} height={34} />
           )
@@ -70,10 +80,10 @@ const createStyles = (colors: Colors) => StyleSheet.create({
     backgroundColor: colors.black
   },
   tabBar: {
-    height: Platform.OS === "ios" ? 85: 63,
+    height: Platform.OS === "ios" ? 85 : 63,
     backgroundColor: colors.black,
     paddingTop: 6,
-    paddingBottom: Platform.OS === "ios" ? 22: 7
+    paddingBottom: Platform.OS === "ios" ? 22 : 7
   },
   tabBarLabel: {
     fontSize: 12

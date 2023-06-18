@@ -33,7 +33,6 @@ const App = () => {
       });
   }, [colorTheme, colors, setColorsScheme]);
 
-
   return (
     <NavigationContainer>
       <StatusBar barStyle={"light-content"} backgroundColor={darkColors.black} />

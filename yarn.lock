@@ -4128,11 +4128,6 @@ human-signals@^2.1.0:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
-i18next-react-native-async-storage@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/i18next-react-native-async-storage/-/i18next-react-native-async-storage-1.0.4.tgz#affe8f9bf4ed266520685ce2d7f88792550d02b2"
-  integrity sha512-udxag0zffOTy6aCaeEh+886wrIGdbpXjt+j9WdPMpXMN48u+rz/Ux9N9jonUA+r3viURK3Hg2aR7MS2jZ+lN2A==
-
 i18next@^23.1.0:
   version "23.1.0"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-23.1.0.tgz#d0c4222b38a3007e6070d43d40fe59ca57d6bbaa"
@@ -6519,6 +6514,11 @@ react-native-gradle-plugin@^0.71.18:
   version "0.71.18"
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.18.tgz#20ef199bc85be32e45bb6cc069ec2e7dcb1a74a6"
   integrity sha512-7F6bD7B8Xsn3JllxcwHhFcsl9aHIig47+3eN4IHFNqfLhZr++3ElDrcqfMzugM+niWbaMi7bJ0kAkAL8eCpdWg==
+
+react-native-localize@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-3.0.0.tgz#41536e8aca8a148fd96d495d3d5cf710e25b2855"
+  integrity sha512-B8taYRLuLIYDzBTKIglA3K6ntjaEwbk6mwQ72ogZYl5ovM00NnpbiZ3sRq8KRVe/V1NGczxT33uVqG6BUWGWhg==
 
 react-native-safe-area-context@^4.5.2:
   version "4.5.2"
