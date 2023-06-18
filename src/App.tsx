@@ -7,6 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Contants } from "./contants";
 import { lightColors } from "./styles/lightColors";
 import { useColorsStore } from "./store/colorsStore";
+import "./i18n";
 
 const App = () => {
   const { colors, setColors } = useColorsStore();
@@ -31,6 +32,7 @@ const App = () => {
         else setColorsScheme(colorTheme);
       });
   }, [colorTheme, colors, setColorsScheme]);
+
 
   return (
     <NavigationContainer>

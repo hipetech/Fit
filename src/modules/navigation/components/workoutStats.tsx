@@ -5,12 +5,8 @@ import { darkColors } from "../../../styles/darkColors";
 const WorkoutStats = () => {
   return (
     <View style={styles.container}>
-      <Text style={{color: darkColors.white, fontSize: 15}}>
-                5 exs
-      </Text>
-      <Text style={{color: darkColors.white, fontSize: 15}}>
-                6 sets
-      </Text>
+      <Text style={{color: darkColors.white, fontSize: 15}}>5 exs</Text>
+      <Text style={{color: darkColors.white, fontSize: 15}}>6 sets</Text>
     </View>
   );
 };

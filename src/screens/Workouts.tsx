@@ -1,12 +1,16 @@
 import React from "react";
-import { View } from "react-native";
+import {useTranslation} from "react-i18next";
+import { SafeAreaView, Text } from "react-native";
 
 const Workouts = () => {
+  const { t } = useTranslation();
 
   return (
-    <View>
-
-    </View>
+    <SafeAreaView>
+      <Text>
+        {t("string")}
+      </Text>
+    </SafeAreaView>
   );
 };
 
