@@ -13,9 +13,10 @@ import AccountLogo from "./assets/account.svg";
 import Calendar from "./components/calendar";
 import WorkoutStats from "./components/workoutStats";
 import Timer from "./components/timer";
-import { Colors } from "../../types/colors";
+import { Colors } from "../../types/Colors";
 import useStyles from "../../hooks/useStyles";
 import useLocales from "../../hooks/useLocales";
+import { font } from "../../styles/font";
 
 const Tab = createBottomTabNavigator();
 
@@ -86,7 +87,9 @@ const createStyles = (colors: Colors) => StyleSheet.create({
     paddingBottom: Platform.OS === "ios" ? 22 : 7
   },
   tabBarLabel: {
-    fontSize: 12
+    fontSize: 12,
+    fontFamily: "Roboto",
+    fontWeight: font.regular
   }
 });
 

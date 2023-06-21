@@ -1,4 +1,4 @@
-import { Colors } from "../types/colors";
+import { Colors } from "../types/Colors";
 import { create } from "zustand/esm";
 import { lightColors } from "../styles/lightColors";
 

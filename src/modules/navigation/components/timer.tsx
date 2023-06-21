@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import TimerIcon from "../assets/timer.svg";
-import SmallIconButton from "../../../components/smallIconButton";
+import SmallIconButton from "../../../ui/smallIconButton";
 
 const Timer = () => {
   return (

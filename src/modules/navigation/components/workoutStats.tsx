@@ -14,8 +14,9 @@ const WorkoutStats = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    gap: 10
-  }
+    gap: 10,
+    fontFamily: "Roboto"
+  },
 });
 
 export default WorkoutStats;

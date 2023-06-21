@@ -1,4 +1,4 @@
-import { Colors } from "../types/colors";
+import { Colors } from "../types/Colors";
 
 export const darkColors: Colors = {
   black: "#000000",

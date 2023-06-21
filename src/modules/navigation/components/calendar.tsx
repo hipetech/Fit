@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 
 import CalenderIcon from "./../assets/calendar.svg";
 
-import SmallIconButton from "../../../components/smallIconButton";
+import SmallIconButton from "../../../ui/smallIconButton";
 
 const Calendar = () => {
 
