@@ -9,7 +9,7 @@ import { darkColors } from "../../styles/darkColors";
 
 import WorkoutLogo from "./assets/workouts.svg";
 import ExerciseLogo from "./assets/exercises.svg";
-import AccountLogo from "./assets/account.svg";
+import SettingsLogo from "./assets/settings.svg";
 import Calendar from "./components/calendar";
 import WorkoutStats from "./components/workoutStats";
 import Timer from "./components/timer";
@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator();
 interface NavigationLocales {
   workouts: string;
   exercises: string;
-  account: string;
+  settings: string;
 }
 
 const Navigation = () => {
@@ -63,12 +63,12 @@ const Navigation = () => {
         }}
       />
       <Tab.Screen
-        name={"account"}
+        name={"settings"}
         component={Account}
         options={{
-          tabBarLabel: locales.account,
+          tabBarLabel: locales.settings,
           tabBarIcon: ({ color }) => (
-            <AccountLogo fill={color} width={34} height={34} />
+            <SettingsLogo fill={color} width={30} height={30} />
           )
         }}
       />
