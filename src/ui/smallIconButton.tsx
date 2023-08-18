@@ -1,26 +1,29 @@
 import React, { FunctionComponent, useCallback, useState } from "react";
-import { StyleSheet, TouchableHighlight } from "react-native";
-import { darkColors } from "../styles/darkColors";
+import { Pressable, StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
+import { useColorsStore } from "../store/colorsStore";
 
 interface SmallIconButtonProps {
     Content: FunctionComponent<SvgProps>,
 }
 
 const SmallIconButton: React.FC<SmallIconButtonProps> = ({ Content }) => {
-  const [fillColor, setFillColor] = useState<string>(darkColors.white);
+
+  const {colors} = useColorsStore();
+  const [fillColor, setFillColor] = useState<string>(colors.white);
 
   const toggleColor = useCallback((color: string) => setFillColor(color), []);
 
+
   return (
-    <TouchableHighlight
+    <Pressable
       style={styles.button}
-      onPressIn={() => toggleColor(darkColors.orange)}
-      onPressOut={() => toggleColor(darkColors.white)}
+      onPressIn={() => toggleColor(colors.orange)}
+      onPressOut={() => toggleColor(colors.white)}
       onPress={() => console.log("hello world")}
     >
       <Content fill={fillColor} />
-    </TouchableHighlight>
+    </Pressable>
   );
 };
 

@@ -5,7 +5,6 @@ import Workouts from "../../screens/Workouts";
 import Exercises from "../../screens/Exercises";
 import Account from "../../screens/Account";
 import { Platform, StyleSheet } from "react-native";
-import { darkColors } from "../../styles/darkColors";
 
 import WorkoutLogo from "./assets/workouts.svg";
 import ExerciseLogo from "./assets/exercises.svg";
@@ -17,6 +16,7 @@ import { Colors } from "../../types/Colors";
 import useStyles from "../../hooks/useStyles";
 import useLocales from "../../hooks/useLocales";
 import { font } from "../../styles/font";
+import { useColorsStore } from "../../store/colorsStore";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,6 +29,8 @@ interface NavigationLocales {
 const Navigation = () => {
   const locales = useLocales<NavigationLocales>("navigation");
 
+  const {colors} = useColorsStore();
+
   const { styles } = useStyles(createStyles);
   return (
     <Tab.Navigator screenOptions={{
@@ -38,8 +40,8 @@ const Navigation = () => {
       tabBarStyle: styles.tabBar,
       headerStyle: styles.header,
       headerTitleAlign: "center",
-      tabBarActiveTintColor: darkColors.orange,
-      tabBarInactiveTintColor: darkColors.white,
+      tabBarActiveTintColor: colors.orange,
+      tabBarInactiveTintColor: colors.white,
       tabBarLabelStyle: styles.tabBarLabel
     }}>
       <Tab.Screen

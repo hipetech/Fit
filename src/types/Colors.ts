@@ -5,4 +5,5 @@ export interface Colors {
   red: string;
   yellow: string;
   green: string;
+  background: string;
 }

@@ -7,4 +7,5 @@ export const lightColors: Colors = {
   red: "#F20E0E",
   yellow: "#EEF20E",
   green: "#4AF20E",
+  background: "#DCDCDC"
 };
