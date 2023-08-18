@@ -1,9 +1,9 @@
 import { Colors } from "../types/Colors";
 
 export const lightColors: Colors = {
-  black: "#ffffff",
-  white: "#FFFFFF",
-  orange: "#E47B05",
+  black: "#F5EDED",
+  white: "#737373",
+  orange: "#1ED800",
   red: "#F20E0E",
   yellow: "#EEF20E",
   green: "#4AF20E",
