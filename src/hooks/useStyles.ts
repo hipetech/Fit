@@ -8,11 +8,11 @@ interface Styles<T extends StyleSheet.NamedStyles<T>> {
   styles: T;
 }
 
-export default function <T extends StyleSheet.NamedStyles<T>>(createStyle: (colors: Colors) => T): Styles<T> {
+export default function <T extends StyleSheet.NamedStyles<T>>(_: (colors: Colors) => T): Styles<T> {
   const { colors } = useColorsStore();
 
   return {
     colors: colors,
-    styles: useMemo(() => createStyle(colors), [colors, createStyle])
+    styles: useMemo(() => _(colors), [colors, _])
   };
 }
