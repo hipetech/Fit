@@ -8,6 +8,7 @@ import { Contants } from "./contants";
 import { lightColors } from "./styles/lightColors";
 import { useColorsStore } from "./store/colorsStore";
 import "./i18n";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const App = () => {
   const { colors, setColors } = useColorsStore();
@@ -35,8 +36,10 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <StatusBar barStyle={"light-content"} backgroundColor={darkColors.black} />
-      <Navigation />
+      <GestureHandlerRootView style={{flex: 1}}>
+        <StatusBar barStyle={"light-content"} backgroundColor={darkColors.black} />
+        <Navigation />
+      </GestureHandlerRootView>
     </NavigationContainer>
   );
 };

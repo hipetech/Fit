@@ -1,16 +1,25 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 import CalenderIcon from "./../assets/calendar.svg";
 
 import SmallIconButton from "../../../ui/smallIconButton";
 
+import Animated from "react-native-reanimated";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
+
 const Calendar = () => {
 
+  const gesture = Gesture.Pan().onUpdate((event) => {
+    console.log("there was an event " + event.x);
+  });
+
   return (
-    <View style={styles.container}>
-      <SmallIconButton Content={CalenderIcon} />
-    </View>
+    <GestureDetector gesture={gesture}>
+      <Animated.View style={styles.container}>
+        <SmallIconButton Content={CalenderIcon} />
+      </Animated.View>
+    </GestureDetector>
   );
 };
 
