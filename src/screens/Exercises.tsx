@@ -1,12 +1,15 @@
 import React from "react";
 import { View } from "react-native";
+import NavigationWrapper from "../modules/navigation/components/navigationWrapper";
 
 const Exercises = () => {
-    return (
-        <View>
+  return (
+    <NavigationWrapper>
+      <View>
 
-        </View>
-    );
+      </View>
+    </NavigationWrapper>
+  );
 };
 
 export default Exercises;

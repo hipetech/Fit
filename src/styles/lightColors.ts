@@ -1,7 +1,7 @@
 import { Colors } from "../types/Colors";
 
 export const lightColors: Colors = {
-  black: "#F5EDED",
+  black: "rgba(245,237,237,0.55)",
   white: "#737373",
   orange: "#1ED800",
   red: "#F20E0E",
