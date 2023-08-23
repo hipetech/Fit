@@ -21,7 +21,6 @@ const NavigationItem: React.FC<NavigationItemProps> = ({icon: Icon, iconWidth = 
 
   return (
     <Pressable style={styles.container} onPress={onPress}>
-      <Icon fill={fill} width={iconWidth} height={iconHeight}/>
       <Text style={[styles.caption, {color: fill}]}>
         {caption}
       </Text>
