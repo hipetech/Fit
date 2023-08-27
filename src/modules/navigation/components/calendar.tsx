@@ -1,12 +1,10 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-
-import CalenderIcon from "./../assets/calendar.svg";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import Animated from "react-native-reanimated";
 
 import SmallIconButton from "../../../ui/smallIconButton";
-
-import Animated from "react-native-reanimated";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import CalenderIcon from "./../assets/calendar.svg";
 
 const Calendar = () => {
 

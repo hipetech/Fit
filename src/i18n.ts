@@ -1,10 +1,9 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import { getLocales } from "react-native-localize";
 
 import en from "./locales/en.json";
 import uk from "./locales/uk.json";
-
-import { getLocales } from "react-native-localize";
 
 
 i18n

@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useCallback, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
+
 import { useColorsStore } from "../store/colorsStore";
 
 interface SmallIconButtonProps {

@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 import { SvgProps } from "react-native-svg";
-import { Colors } from "../../../types/Colors";
+
 import useStyles from "../../../hooks/useStyles";
 import { font } from "../../../styles/font";
+import { Colors } from "../../../types/Colors";
 
 
 interface NavigationItemProps {
@@ -35,7 +36,6 @@ const style = (colors: Colors) => StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     height: 51,
-    marginTop: 8
   },
   caption: {
     fontFamily: "Roboto",

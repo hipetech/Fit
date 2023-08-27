@@ -1,13 +1,15 @@
+import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React, { useCallback, useState } from "react";
 import { Platform, StyleSheet, View } from "react-native";
-import WorkoutLogo from "../assets/workouts.svg";
+
+import TransparentView from "../../../components/transparentView";
+import useLocales from "../../../hooks/useLocales";
+import useStyles from "../../../hooks/useStyles";
+import { Colors } from "../../../types/Colors";
 import ExerciseLogo from "../assets/exercises.svg";
 import SettingsLogo from "../assets/settings.svg";
+import WorkoutLogo from "../assets/workouts.svg";
 import NavigationItem from "./navigationItem";
-import useLocales from "../../../hooks/useLocales";
-import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { Colors } from "../../../types/Colors";
-import useStyles from "../../../hooks/useStyles";
 
 interface Translation {
   workouts: string;
@@ -26,7 +28,7 @@ const BottomNavigation: React.FC<BottomTabBarProps> = ({navigation}) => {
   }, [navigation]);
 
   return (
-    <View style={styles.bottomNav}>
+    <TransparentView style={styles.bottomNav}>
       <View style={styles.navigationItems}>
         <NavigationItem
           icon={WorkoutLogo}
@@ -53,7 +55,7 @@ const BottomNavigation: React.FC<BottomTabBarProps> = ({navigation}) => {
           onPress={() => selectTab("settings")}
         />
       </View>
-    </View>
+    </TransparentView>
   );
 };
 

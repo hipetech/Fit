@@ -6,4 +6,5 @@ export interface Colors {
   yellow: string;
   green: string;
   background: string;
+  transparent: string;
 }

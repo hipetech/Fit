@@ -1,15 +1,18 @@
-import React, { useCallback, useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import Navigation from "./modules/navigation";
-import { ColorSchemeName, StatusBar, useColorScheme } from "react-native";
-import { darkColors } from "./styles/darkColors";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Contants } from "./contants";
-import { lightColors } from "./styles/lightColors";
-import { useColorsStore } from "./store/colorsStore";
 import "./i18n";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { NavigationContainer } from "@react-navigation/native";
+import React, { useCallback, useEffect } from "react";
+import { ColorSchemeName, Platform, StatusBar, useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import changeNavigationBarColor from "react-native-navigation-bar-color";
+
+import { Contants } from "./contants";
+import Navigation from "./modules/navigation";
+import { useColorsStore } from "./store/colorsStore";
 import { useThemeStore } from "./store/themeStore";
+import { darkColors } from "./styles/darkColors";
+import { lightColors } from "./styles/lightColors";
 
 const App = () => {
   const { colors, setColors } = useColorsStore();
@@ -38,7 +41,15 @@ const App = () => {
         else setColorsScheme(colorTheme);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [colorTheme]);
+
+  // set navigation color Android only
+  useEffect(() => {
+    if (Platform.OS === "android") {
+      changeNavigationBarColor(colors.black);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [theme]);
 
   return (
     <NavigationContainer>

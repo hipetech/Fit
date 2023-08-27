@@ -18,7 +18,8 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "simple-import-sort"
     ],
     "rules": {
         "indent": [
@@ -36,6 +37,7 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "simple-import-sort/imports": "error"
     }
 }

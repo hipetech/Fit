@@ -1,9 +1,10 @@
-import React from "react";
-import Workouts from "../../screens/Workouts";
-import Exercises from "../../screens/Exercises";
-import Account from "../../screens/Account";
-import { RootStackParamList } from "../../types/RootStackParamList";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react";
+
+import Account from "../../screens/Account";
+import Exercises from "../../screens/Exercises";
+import Workouts from "../../screens/Workouts";
+import { RootStackParamList } from "../../types/RootStackParamList";
 import BottomNavigation from "./components/bottomNavigation";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();

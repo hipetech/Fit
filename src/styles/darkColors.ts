@@ -1,11 +1,12 @@
 import { Colors } from "../types/Colors";
 
 export const darkColors: Colors = {
-  black: "rgba(0, 0, 0, 0.73)",
+  black: "#1c1c1c",
   white: "#FFFFFF",
   orange: "#E47B05",
   red: "#F20E0E",
   yellow: "#EEF20E",
   green: "#4AF20E",
-  background: "#1F1F1F"
+  background: "#3d3d3d",
+  transparent: "rgba(28, 28, 28, 0.9)"
 };
