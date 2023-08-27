@@ -2,30 +2,35 @@ import React from "react";
 import Workouts from "../../screens/Workouts";
 import Exercises from "../../screens/Exercises";
 import Account from "../../screens/Account";
-import { createStackNavigator } from "@react-navigation/stack";
 import { RootStackParamList } from "../../types/RootStackParamList";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import BottomNavigation from "./components/bottomNavigation";
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
 const Navigation = () => {
+
   return (
-    <Stack.Navigator screenOptions={{
-      headerShown: false,
-      animationEnabled: false
-    }}>
-      <Stack.Screen
+    <Tab.Navigator
+      initialRouteName={"workouts"}
+      tabBar={(props) => <BottomNavigation {...props}/>}
+      screenOptions={{
+        headerShown: false,
+        freezeOnBlur: false
+      }}>
+      <Tab.Screen
         name={"workouts"}
         component={Workouts}
       />
-      <Stack.Screen
+      <Tab.Screen
         name={"exercises"}
         component={Exercises}
       />
-      <Stack.Screen
+      <Tab.Screen
         name={"settings"}
         component={Account}
       />
-    </Stack.Navigator>
+    </Tab.Navigator>
   );
 };
 

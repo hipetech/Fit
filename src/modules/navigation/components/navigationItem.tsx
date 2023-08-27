@@ -21,6 +21,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({icon: Icon, iconWidth = 
 
   return (
     <Pressable style={styles.container} onPress={onPress}>
+      <Icon fill={fill} width={iconWidth} height={iconHeight}/>
       <Text style={[styles.caption, {color: fill}]}>
         {caption}
       </Text>
@@ -33,7 +34,7 @@ const style = (colors: Colors) => StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    height: 57,
+    height: 51,
     marginTop: 8
   },
   caption: {

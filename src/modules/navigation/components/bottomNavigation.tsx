@@ -1,14 +1,13 @@
-import React, { useMemo } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useCallback, useState } from "react";
+import { Platform, StyleSheet, View } from "react-native";
 import WorkoutLogo from "../assets/workouts.svg";
 import ExerciseLogo from "../assets/exercises.svg";
 import SettingsLogo from "../assets/settings.svg";
 import NavigationItem from "./navigationItem";
 import useLocales from "../../../hooks/useLocales";
-import { useNavigation } from "@react-navigation/native";
-import { getCurrentScreenName } from "../../../utils/getCurrentScreenName";
-import { ScreenNavigation } from "../../../types/ScreenNavigation";
-import BlurredView from "../../../components/blurredView";
+import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
+import { Colors } from "../../../types/Colors";
+import useStyles from "../../../hooks/useStyles";
 
 interface Translation {
   workouts: string;
@@ -16,58 +15,65 @@ interface Translation {
   settings: string;
 }
 
-const BottomNavigation = () => {
+const BottomNavigation: React.FC<BottomTabBarProps> = ({navigation}) => {
   const locale = useLocales<Translation>("navigation");
-  const navigation = useNavigation<ScreenNavigation>();
-  const screenName = useMemo(() => getCurrentScreenName(navigation.getParent() || navigation), [navigation]);
+  const [selected, setSelected] = useState<string>("workouts");
+  const { styles } = useStyles(style);
+
+  const selectTab = useCallback((route: string) => {
+    setSelected(route);
+    navigation.navigate(route);
+  }, [navigation]);
 
   return (
-    <BlurredView style={styles.bottomNav}>
+    <View style={styles.bottomNav}>
       <View style={styles.navigationItems}>
         <NavigationItem
           icon={WorkoutLogo}
           caption={locale.workouts}
-          isActive={"workouts" === screenName}
+          isActive={"workouts" === selected}
           iconWidth={30}
           iconHeight={30}
-          onPress={() => navigation.navigate("workouts")}
+          onPress={() => selectTab("workouts")}
         />
         <NavigationItem
           icon={ExerciseLogo}
           caption={locale.exercises}
-          isActive={"exercises" === screenName}
+          isActive={"exercises" === selected}
           iconWidth={30}
           iconHeight={30}
-          onPress={() => navigation.navigate("exercises")}
+          onPress={() => selectTab("exercises")}
         />
         <NavigationItem
           icon={SettingsLogo}
           caption={locale.settings}
-          isActive={"settings" === screenName}
+          isActive={"settings" === selected}
           iconWidth={30}
           iconHeight={30}
-          onPress={() => navigation.navigate("settings")}
+          onPress={() => selectTab("settings")}
         />
       </View>
-    </BlurredView>
+    </View>
   );
 };
 
-const styles = StyleSheet.create({
+const style = (colors: Colors) => StyleSheet.create({
   bottomNav: {
     width: "100%",
-    height: 90,
+    height: Platform.OS === "android" ? 70 : 90,
     position: "absolute",
     bottom: 0,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "flex-start",
+    alignItems: "center",
+    backgroundColor: colors.black,
+    paddingTop: 30
   },
   navigationItems: {
     width: "80%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 20
+    height: 10,
   }
 });
 
