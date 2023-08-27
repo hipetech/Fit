@@ -67,7 +67,6 @@ const style = (colors: Colors) => StyleSheet.create({
     bottom: 0,
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: colors.black,
     paddingTop: 30
   },
   navigationItems: {

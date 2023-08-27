@@ -6,6 +6,7 @@ import Exercises from "../../screens/Exercises";
 import Workouts from "../../screens/Workouts";
 import { RootStackParamList } from "../../types/RootStackParamList";
 import BottomNavigation from "./components/bottomNavigation";
+import Header from "./components/header";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -16,8 +17,8 @@ const Navigation = () => {
       initialRouteName={"workouts"}
       tabBar={(props) => <BottomNavigation {...props}/>}
       screenOptions={{
-        headerShown: false,
-        freezeOnBlur: false
+        freezeOnBlur: false,
+        header: (props) => <Header {...props} />
       }}>
       <Tab.Screen
         name={"workouts"}
