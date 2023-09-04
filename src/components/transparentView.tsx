@@ -16,7 +16,7 @@ const TransparentView: React.FC<ViewProps> = ({children, style, ...rest}) => {
 
 const componentStyle = (colors: Colors) => StyleSheet.create({
   container: {
-    backgroundColor: colors.transparent
+    backgroundColor: colors.transparent,
   }
 });
 

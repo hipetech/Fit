@@ -3,9 +3,6 @@ import { StyleSheet } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated from "react-native-reanimated";
 
-import SmallIconButton from "../../../ui/smallIconButton";
-import CalenderIcon from "./../assets/calendar.svg";
-
 const Calendar = () => {
 
   const gesture = Gesture.Pan().onUpdate((event) => {
@@ -15,7 +12,7 @@ const Calendar = () => {
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={styles.container}>
-        <SmallIconButton Content={CalenderIcon} />
+
       </Animated.View>
     </GestureDetector>
   );

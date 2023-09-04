@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
 
@@ -9,18 +9,19 @@ interface SmallIconButtonProps {
 }
 
 const SmallIconButton: React.FC<SmallIconButtonProps> = ({ Content }) => {
+  const [fillColor, setFillColor] = useState<string>("");
 
   const {colors} = useColorsStore();
-  const [fillColor, setFillColor] = useState<string>(colors.white);
 
-  const toggleColor = useCallback((color: string) => setFillColor(color), []);
-
+  useEffect(() => {
+    setFillColor(colors.white);
+  }, [colors.white]);
 
   return (
     <Pressable
       style={styles.button}
-      onPressIn={() => toggleColor(colors.orange)}
-      onPressOut={() => toggleColor(colors.white)}
+      onPressIn={() => setFillColor(colors.orange)}
+      onPressOut={() => setFillColor(colors.white)}
       onPress={() => console.log("hello world")}
     >
       <Content fill={fillColor} />
