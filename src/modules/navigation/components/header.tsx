@@ -3,20 +3,25 @@ import React from "react";
 import { Platform, SafeAreaView, StyleSheet } from "react-native";
 
 import TransparentView from "../../../components/transparentView";
-import SmallIconButton from "../../../ui/smallIconButton";
-import CalenderIcon from "../assets/calendar.svg";
-import TimerIcon from "../assets/timer.svg";
+import useCurtainOverlay from "../../curtainOverlay";
+import Calendar from "../assets/calendar.svg";
+import Timer from "../assets/timer.svg";
 import WorkoutStats from "./workoutStats";
 
 const Header: React.FC<BottomTabHeaderProps> = () => {
+  const {CurtainOverlay, OpenOverlayButton} = useCurtainOverlay();
+
   return (
-    <TransparentView style={styles.container}>
-      <SafeAreaView style={styles.items}>
-        <SmallIconButton Content={TimerIcon} />
-        <WorkoutStats />
-        <SmallIconButton Content={CalenderIcon} />
-      </SafeAreaView>
-    </TransparentView>
+    <>
+      <CurtainOverlay />
+      <TransparentView style={styles.container}>
+        <SafeAreaView style={styles.items}>
+          <OpenOverlayButton icon={Timer} />
+          <WorkoutStats />
+          <OpenOverlayButton icon={Calendar} />
+        </SafeAreaView>
+      </TransparentView>
+    </>
   );
 };
 
