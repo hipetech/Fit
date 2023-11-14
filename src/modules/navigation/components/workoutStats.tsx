@@ -5,7 +5,6 @@ import useStyles from "../../../hooks/useStyles";
 import { Colors } from "../../../types/Colors";
 
 const WorkoutStats = () => {
-
   const { styles } = useStyles(createStyle);
 
   return (

@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { Directions, Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, { SharedValue, useAnimatedStyle, withTiming } from "react-native-reanimated";
@@ -11,9 +11,11 @@ import DragIsland from "../../../ui/dragIsland";
 interface CurtainOverlayProps {
   animatedHeight: SharedValue<number>;
   isOverlayOpen: SharedValue<boolean>;
+  content: ReactNode;
 }
 
-const CurtainOverlay: React.FC<CurtainOverlayProps> = ({ animatedHeight, isOverlayOpen }) => {
+const CurtainOverlay: React.FC<CurtainOverlayProps> = ({ content, animatedHeight, isOverlayOpen }) => {
+
   const animatedStyle = useAnimatedStyle(() => {
     return {
       height: animatedHeight.value
@@ -47,6 +49,9 @@ const CurtainOverlay: React.FC<CurtainOverlayProps> = ({ animatedHeight, isOverl
             <DragIsland width={70}/>
           </View>
         </GestureDetector>
+        <View>
+          {content}
+        </View>
       </TransparentView>
     </Animated.View>
   );
@@ -55,7 +60,8 @@ const CurtainOverlay: React.FC<CurtainOverlayProps> = ({ animatedHeight, isOverl
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    zIndex: 2,
+    zIndex: 100,
+    position: "relative",
   },
   background: {
     width: "100%",

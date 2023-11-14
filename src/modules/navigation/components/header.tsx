@@ -1,6 +1,5 @@
-import { BottomTabHeaderProps } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { Platform, SafeAreaView, StyleSheet } from "react-native";
+import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 import TransparentView from "../../../components/transparentView";
 import useCurtainOverlay from "../../curtainOverlay";
@@ -8,24 +7,30 @@ import Calendar from "../assets/calendar.svg";
 import Timer from "../assets/timer.svg";
 import WorkoutStats from "./workoutStats";
 
-const Header: React.FC<BottomTabHeaderProps> = () => {
-  const {CurtainOverlay, OpenOverlayButton} = useCurtainOverlay();
+const Header: React.FC = () => {
+  const [CalendarOverlay, OpenCalendarArea] = useCurtainOverlay(<Text>Calendear</Text>);
+  const [TimerOverlay, OpenTimerOverlay] = useCurtainOverlay(<Text>Timer</Text>);
 
   return (
-    <>
-      <CurtainOverlay />
+    <View style={styles.headerContainer}>
+      <CalendarOverlay />
+      <TimerOverlay />
       <TransparentView style={styles.container}>
         <SafeAreaView style={styles.items}>
-          <OpenOverlayButton icon={Timer} />
+          <OpenTimerOverlay icon={Timer} />
           <WorkoutStats />
-          <OpenOverlayButton icon={Calendar} />
+          <OpenCalendarArea icon={Calendar} />
         </SafeAreaView>
       </TransparentView>
-    </>
+    </View>
   );
 };
 
 const styles =  StyleSheet.create({
+  headerContainer: {
+    zIndex: 99,
+    position: "relative"
+  },
   container: {
     width: "100%",
     height: Platform.OS === "android" ? 45 : 100,

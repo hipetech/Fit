@@ -13,26 +13,27 @@ const Tab = createBottomTabNavigator<RootStackParamList>();
 const Navigation = () => {
 
   return (
-    <Tab.Navigator
-      initialRouteName={"workouts"}
-      tabBar={(props) => <BottomNavigation {...props}/>}
-      screenOptions={{
-        freezeOnBlur: false,
-        header: (props) => <Header {...props} />
-      }}>
-      <Tab.Screen
-        name={"workouts"}
-        component={Workouts}
-      />
-      <Tab.Screen
-        name={"exercises"}
-        component={Exercises}
-      />
-      <Tab.Screen
-        name={"settings"}
-        component={Account}
-      />
-    </Tab.Navigator>
+    <>
+      <Header />
+      <Tab.Navigator
+        initialRouteName={"workouts"}
+        tabBar={(props) => <BottomNavigation {...props} />}
+        screenOptions={{headerShown: false}}
+      >
+        <Tab.Screen
+          name={"workouts"}
+          component={Workouts}
+        />
+        <Tab.Screen
+          name={"exercises"}
+          component={Exercises}
+        />
+        <Tab.Screen
+          name={"settings"}
+          component={Account}
+        />
+      </Tab.Navigator>
+    </>
   );
 };
 
