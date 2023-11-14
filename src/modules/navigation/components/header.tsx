@@ -26,7 +26,7 @@ const Header: React.FC = () => {
   );
 };
 
-const styles =  StyleSheet.create({
+const styles = StyleSheet.create({
   headerContainer: {
     zIndex: 99,
     position: "relative"
@@ -36,7 +36,7 @@ const styles =  StyleSheet.create({
     height: Platform.OS === "android" ? 45 : 100,
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
+    position: "absolute"
   },
   items: {
     width: "90%",
