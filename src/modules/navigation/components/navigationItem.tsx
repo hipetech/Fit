@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
+import { useShallow } from "zustand/react/shallow";
 
-import useStyles from "../../../hooks/useStyles";
-import { font } from "../../../styles/font";
-import { Colors } from "../../../types/Colors";
+import Text from "../../../components/text";
+import { useColorsStore } from "../../../store/colorsStore";
 
 
 interface NavigationItemProps {
@@ -17,31 +17,25 @@ interface NavigationItemProps {
 }
 
 const NavigationItem: React.FC<NavigationItemProps> = ({icon: Icon, iconWidth = 44, iconHeight = 44,  caption, isActive, onPress}) => {
-  const {colors, styles} = useStyles(style);
+  const colors = useColorsStore(useShallow(state => state.colors));
   const fill = isActive ? colors.orange : colors.white;
 
   return (
     <Pressable style={styles.container} onPress={onPress}>
       <Icon fill={fill} width={iconWidth} height={iconHeight}/>
-      <Text style={[styles.caption, {color: fill}]}>
+      <Text style={{color: fill}}>
         {caption}
       </Text>
     </Pressable>
   );
 };
 
-const style = (colors: Colors) => StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     height: 51,
-  },
-  caption: {
-    fontFamily: "Roboto",
-    fontWeight: font.regular,
-    color: colors.white,
-    fontSize: 12
   }
 });
 
