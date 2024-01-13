@@ -74,3 +74,6 @@ yarn.lock
 
 # npm
 /package-lock.json
+
+# bun
+/bun.lockb

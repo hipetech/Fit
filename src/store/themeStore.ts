@@ -1,6 +1,7 @@
-import { create } from "zustand/esm";
-
 import { Theme } from "../types/Theme";
+import { create } from "zustand";
+
+
 
 interface ThemeState {
   theme: Theme;
