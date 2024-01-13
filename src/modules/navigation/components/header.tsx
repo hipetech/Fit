@@ -1,27 +1,13 @@
 import React from "react";
-import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 
-import TransparentView from "../../../components/transparentView";
-import useCurtainOverlay from "../../curtainOverlay";
-import Calendar from "../assets/calendar.svg";
-import Timer from "../assets/timer.svg";
-import WorkoutStats from "./workoutStats";
+import { CurtainOverlay } from "../../curtainOverlay";
 
 const Header: React.FC = () => {
-  const [CalendarOverlay, OpenCalendarArea] = useCurtainOverlay(<Text>Calendear</Text>);
-  const [TimerOverlay, OpenTimerOverlay] = useCurtainOverlay(<Text>Timer</Text>);
 
   return (
-    <View style={styles.headerContainer}>
-      <CalendarOverlay />
-      <TimerOverlay />
-      <TransparentView style={styles.container}>
-        <SafeAreaView style={styles.items}>
-          <OpenTimerOverlay icon={Timer} />
-          <WorkoutStats />
-          <OpenCalendarArea icon={Calendar} />
-        </SafeAreaView>
-      </TransparentView>
+    <View style={[styles.headerContainer, styles.container]}>
+      <CurtainOverlay content={<View style={{width: "100%", height: "100%", backgroundColor: "red"}}></View>}  />
     </View>
   );
 };

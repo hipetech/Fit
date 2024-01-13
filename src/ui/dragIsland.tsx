@@ -12,17 +12,16 @@ const DragIsland: React.FC<DragIslandProps> = ({ width }) => {
 
   const { styles } = useStyles(style);
 
-  return (
-    <View style={[{ width }, styles.island]}>
 
-    </View>
+  return (
+    <View style={[{ width }, styles.island]} />
   );
 };
 
 const style = (colors: Colors) => StyleSheet.create({
   island: {
     backgroundColor: colors.white,
-    height: 8,
+    height: 6,
     borderRadius: 100
   }
 });
