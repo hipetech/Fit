@@ -1,11 +1,9 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { Platform, StyleSheet, View } from "react-native";
 
 import TransparentView from "../../../components/transparentView";
 import useLocales from "../../../hooks/useLocales";
-import useStyles from "../../../hooks/useStyles";
-import { Colors } from "../../../types/Colors";
 import ExerciseLogo from "../assets/exercises.svg";
 import SettingsLogo from "../assets/settings.svg";
 import WorkoutLogo from "../assets/workouts.svg";
@@ -17,15 +15,16 @@ interface Translation {
   settings: string;
 }
 
-const BottomNavigation: React.FC<BottomTabBarProps> = ({navigation}) => {
+const BottomNavigation: React.FC<BottomTabBarProps> = ({ navigation }) => {
   const locale = useLocales<Translation>("navigation");
   const [selected, setSelected] = useState<string>("workouts");
-  const { styles } = useStyles(style);
 
-  const selectTab = useCallback((route: string) => {
+  const selectTab = (route: string) => {
     setSelected(route);
     navigation.navigate(route);
-  }, [navigation]);
+  };
+
+  console.log("navigation render");
 
   return (
     <TransparentView style={styles.bottomNav}>
@@ -59,7 +58,7 @@ const BottomNavigation: React.FC<BottomTabBarProps> = ({navigation}) => {
   );
 };
 
-const style = (colors: Colors) => StyleSheet.create({
+const styles = StyleSheet.create({
   bottomNav: {
     width: "100%",
     height: Platform.OS === "android" ? 70 : 90,
@@ -67,7 +66,7 @@ const style = (colors: Colors) => StyleSheet.create({
     bottom: 0,
     justifyContent: "flex-start",
     alignItems: "center",
-    paddingTop: 30
+    paddingTop: 30,
   },
   navigationItems: {
     width: "80%",
@@ -75,7 +74,7 @@ const style = (colors: Colors) => StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     height: 10,
-  }
+  },
 });
 
 export default BottomNavigation;

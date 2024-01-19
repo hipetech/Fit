@@ -9,21 +9,18 @@ interface DragIslandProps {
 }
 
 const DragIsland: React.FC<DragIslandProps> = ({ width }) => {
-
   const { styles } = useStyles(style);
 
-
-  return (
-    <View style={[{ width }, styles.island]} />
-  );
+  return <View style={[{ width }, styles.island]} />;
 };
 
-const style = (colors: Colors) => StyleSheet.create({
-  island: {
-    backgroundColor: colors.white,
-    height: 6,
-    borderRadius: 100
-  }
-});
+const style = (colors: Colors) =>
+  StyleSheet.create({
+    island: {
+      backgroundColor: colors.white,
+      height: 6,
+      borderRadius: 100,
+    },
+  });
 
 export default DragIsland;

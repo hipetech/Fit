@@ -4,13 +4,13 @@ import { ColorSchemeName, Platform, StatusBar, useColorScheme } from "react-nati
 import changeNavigationBarColor from "react-native-navigation-bar-color";
 
 import { Contants } from "../contants";
-import { setColorScheme } from "../helpers/setColorScheme";
 import { useColorsStore } from "../store/colorsStore";
 import { useThemeStore } from "../store/themeStore";
+import { setColorScheme } from "../utils/setColorScheme.ts";
 
 const Appearance = () => {
   const { colors } = useColorsStore();
-  const {theme} = useThemeStore();
+  const { theme } = useThemeStore();
 
   // set navigation color Android only
   useEffect(() => {
@@ -24,18 +24,19 @@ const Appearance = () => {
 
   // get theme
   useEffect(() => {
-    AsyncStorage.getItem(Contants.COLOR_THEME)
-      .then(savedTheme => {
-        if (savedTheme) setColorScheme(savedTheme as ColorSchemeName);
-        else setColorScheme(colorTheme);
-      });
+    AsyncStorage.getItem(Contants.COLOR_THEME).then((savedTheme) => {
+      if (savedTheme) setColorScheme(savedTheme as ColorSchemeName);
+      else setColorScheme(colorTheme);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorTheme]);
 
-
   console.log("Appearance render");
   return (
-    <StatusBar barStyle={theme === "dark" ? "light-content" : "dark-content" } backgroundColor={colors.black} />
+    <StatusBar
+      barStyle={theme === "dark" ? "light-content" : "dark-content"}
+      backgroundColor={colors.black}
+    />
   );
 };
 

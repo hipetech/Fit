@@ -10,24 +10,26 @@ interface TextProps extends TextElementProps {
   fontWeight?: FontWeight;
 }
 
-const Text: React.FC<TextProps> = (
-  {
-    children,
-    fontSize = 14,
-    fontWeight = FontWeight.REGULAR,
-    style,
-    ...rest
-  }
-) => {
+const Text: React.FC<TextProps> = ({
+  children,
+  fontSize = 14,
+  fontWeight = FontWeight.REGULAR,
+  style,
+  ...rest
+}) => {
   return (
-    <TextElement {...rest} style={{
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-      fontFamily: "Roboto",
-      ...style as object
-    }}>
+    <TextElement
+      {...rest}
+      style={{
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        fontFamily: "Roboto",
+        ...(style as object),
+      }}
+    >
       {children}
-    </TextElement>);
+    </TextElement>
+  );
 };
 
 export default Text;

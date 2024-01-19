@@ -11,14 +11,13 @@ import Header from "./components/header";
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
 const Navigation = () => {
-
   return (
     <>
       <Header />
       <Tab.Navigator
         initialRouteName={"workouts"}
         tabBar={(props) => <BottomNavigation {...props} />}
-        screenOptions={{headerShown: false}}
+        screenOptions={{ headerShown: false }}
       >
         <Tab.Screen
           name={"workouts"}

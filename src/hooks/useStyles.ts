@@ -14,6 +14,6 @@ export default function <T extends StyleSheet.NamedStyles<T>>(_: (colors: Colors
 
   return {
     colors: colors,
-    styles: useMemo(() => _(colors), [colors, _])
+    styles: useMemo(() => _(colors), [colors, _]),
   };
 }

@@ -8,8 +8,7 @@ interface ColorsState {
   setColors: (colors: Colors) => void;
 }
 
-
 export const useColorsStore = create<ColorsState>((setState) => ({
   colors: lightColors,
-  setColors: (colors: Colors) => setState(() => ({ colors: colors }))
+  setColors: (colors: Colors) => setState(() => ({ colors: colors })),
 }));

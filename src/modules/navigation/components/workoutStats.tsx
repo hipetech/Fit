@@ -15,16 +15,17 @@ const WorkoutStats = () => {
   );
 };
 
-const createStyle = (colors: Colors) => StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    gap: 10,
-    fontFamily: "Roboto"
-  },
-  textStyle: {
-    color: colors.white,
-    fontSize: 15
-  }
-});
+const createStyle = (colors: Colors) =>
+  StyleSheet.create({
+    container: {
+      flexDirection: "row",
+      gap: 10,
+      fontFamily: "Roboto",
+    },
+    textStyle: {
+      color: colors.white,
+      fontSize: 15,
+    },
+  });
 
 export default WorkoutStats;
