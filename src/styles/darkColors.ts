@@ -8,5 +8,5 @@ export const darkColors: Colors = {
   yellow: "#EEF20E",
   green: "#4AF20E",
   background: "#3d3d3d",
-  transparent: "rgba(28, 28, 28, 0.9)",
+  transparent: "rgba(26,26,26,0.97)",
 };

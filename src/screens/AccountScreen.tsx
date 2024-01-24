@@ -1,8 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 
-const Account = () => {
+const AccountScreen = () => {
   return <View></View>;
 };
 
-export default Account;
+export default AccountScreen;

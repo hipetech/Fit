@@ -26,8 +26,6 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
   const colors = useColorsStore(useShallow((state) => state.colors));
   const fill = isActive ? colors.orange : colors.white;
 
-  console.log("render items");
-
   return (
     <Pressable
       style={styles.container}

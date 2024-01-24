@@ -1,12 +1,14 @@
 import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 
-import { TopDrawerMenu } from "../../topDrawerMenu";
+import { TopDrawer } from "../../../components/topDrawer.tsx";
 
 const Header: React.FC = () => {
   return (
     <View style={[styles.headerContainer, styles.container]}>
-      <TopDrawerMenu content={<View />} />
+      <TopDrawer>
+        <View />
+      </TopDrawer>
     </View>
   );
 };

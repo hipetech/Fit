@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 
-import Account from "../../screens/Account";
-import Exercises from "../../screens/Exercises";
-import Workouts from "../../screens/Workouts";
+import AccountScreen from "../../screens/AccountScreen.tsx";
+import ExercisesScreen from "../../screens/ExercisesScreen.tsx";
+import WorkoutScreen from "../../screens/WorkoutsScreen.tsx";
 import { RootStackParamList } from "../../types/RootStackParamList";
 import BottomNavigation from "./components/bottomNavigation";
 import Header from "./components/header";
@@ -21,15 +21,15 @@ const Navigation = () => {
       >
         <Tab.Screen
           name={"workouts"}
-          component={Workouts}
+          component={WorkoutScreen}
         />
         <Tab.Screen
           name={"exercises"}
-          component={Exercises}
+          component={ExercisesScreen}
         />
         <Tab.Screen
           name={"settings"}
-          component={Account}
+          component={AccountScreen}
         />
       </Tab.Navigator>
     </>

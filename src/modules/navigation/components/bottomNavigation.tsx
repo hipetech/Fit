@@ -24,8 +24,6 @@ const BottomNavigation: React.FC<BottomTabBarProps> = ({ navigation }) => {
     navigation.navigate(route);
   };
 
-  console.log("navigation render");
-
   return (
     <TransparentView style={styles.bottomNav}>
       <View style={styles.navigationItems}>
