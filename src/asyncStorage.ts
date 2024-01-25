@@ -1,3 +1,3 @@
-export enum Contants {
+export enum AsyncStorageValues {
   COLOR_THEME = "COLOR_THEME",
 }

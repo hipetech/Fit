@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { ColorSchemeName, Platform, StatusBar, useColorScheme } from "react-native";
 import changeNavigationBarColor from "react-native-navigation-bar-color";
 
-import { Contants } from "../contants";
+import { AsyncStorageValues } from "../asyncStorage.ts";
 import { useColorsStore } from "../store/colorsStore";
 import { useThemeStore } from "../store/themeStore";
 import { setColorScheme } from "../utils/setColorScheme.ts";
@@ -24,7 +24,7 @@ const Appearance = () => {
 
   // get theme
   useEffect(() => {
-    AsyncStorage.getItem(Contants.COLOR_THEME).then((savedTheme) => {
+    AsyncStorage.getItem(AsyncStorageValues.COLOR_THEME).then((savedTheme) => {
       if (savedTheme) setColorScheme(savedTheme as ColorSchemeName);
       else setColorScheme(colorTheme);
     });

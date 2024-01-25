@@ -1,4 +1,4 @@
-import { ScreenNavigation } from "../types/ScreenNavigation";
+import type { ScreenNavigation } from "../types/ScreenNavigation";
 
 export function getCurrentScreenName(navigation: ScreenNavigation): string | undefined {
   const index = navigation.getState().index;

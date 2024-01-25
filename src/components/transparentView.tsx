@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, ViewProps } from "react-native";
 
 import useStyles from "../hooks/useStyles";
-import { Colors } from "../types/Colors";
+import type { Colors } from "../types/Colors";
 
 const TransparentView: React.FC<ViewProps> = ({ children, style, ...rest }) => {
   const { styles } = useStyles(componentStyle);

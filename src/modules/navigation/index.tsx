@@ -4,7 +4,7 @@ import React from "react";
 import AccountScreen from "../../screens/AccountScreen.tsx";
 import ExercisesScreen from "../../screens/ExercisesScreen.tsx";
 import WorkoutScreen from "../../screens/WorkoutsScreen.tsx";
-import { RootStackParamList } from "../../types/RootStackParamList";
+import type { RootStackParamList } from "../../types/RootStackParamList";
 import BottomNavigation from "./components/bottomNavigation";
 import Header from "./components/header";
 

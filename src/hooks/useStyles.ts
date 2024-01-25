@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { StyleSheet } from "react-native";
 
 import { useColorsStore } from "../store/colorsStore";
-import { Colors } from "../types/Colors";
+import type { Colors } from "../types/Colors";
 
 interface Styles<T extends StyleSheet.NamedStyles<T>> {
   colors: Colors;

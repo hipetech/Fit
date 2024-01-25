@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import useStyles from "../../../hooks/useStyles";
-import { Colors } from "../../../types/Colors";
+import type { Colors } from "../../../types/Colors";
 
 const WorkoutStats = () => {
   const { styles } = useStyles(createStyle);

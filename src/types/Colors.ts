@@ -1,4 +1,4 @@
-export interface Colors {
+export type Colors = {
   black: string;
   white: string;
   orange: string;
@@ -7,4 +7,4 @@ export interface Colors {
   green: string;
   background: string;
   transparent: string;
-}
+};
