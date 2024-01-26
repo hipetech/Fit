@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { ColorSchemeName, Platform, StatusBar, useColorScheme } from "react-native";
 import changeNavigationBarColor from "react-native-navigation-bar-color";
 
@@ -13,7 +13,7 @@ const Appearance = () => {
   const { theme } = useThemeStore();
 
   // set navigation color Android only
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (Platform.OS === "android") {
       changeNavigationBarColor(colors.black);
     }
@@ -23,7 +23,7 @@ const Appearance = () => {
   const colorTheme = useColorScheme();
 
   // get theme
-  useEffect(() => {
+  useLayoutEffect(() => {
     AsyncStorage.getItem(AsyncStorageValues.COLOR_THEME).then((savedTheme) => {
       if (savedTheme) setColorScheme(savedTheme as ColorSchemeName);
       else setColorScheme(colorTheme);

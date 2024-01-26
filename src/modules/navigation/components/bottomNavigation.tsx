@@ -1,9 +1,11 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React, { useState } from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import TransparentView from "../../../components/transparentView";
 import useLocales from "../../../hooks/useLocales";
+import { HapticFeedback } from "../../../utils/hapticFeedback.ts";
+import { selectForPlatform } from "../../../utils/selectForPlatform.ts";
 import ExerciseLogo from "../assets/exercises.svg";
 import SettingsLogo from "../assets/settings.svg";
 import WorkoutLogo from "../assets/workouts.svg";
@@ -22,6 +24,7 @@ const BottomNavigation: React.FC<BottomTabBarProps> = ({ navigation }) => {
   const selectTab = (route: string) => {
     setSelected(route);
     navigation.navigate(route);
+    HapticFeedback.lightImpact();
   };
 
   return (
@@ -31,24 +34,24 @@ const BottomNavigation: React.FC<BottomTabBarProps> = ({ navigation }) => {
           icon={WorkoutLogo}
           caption={locale.workouts}
           isActive={"workouts" === selected}
-          iconWidth={30}
-          iconHeight={30}
+          iconWidth={24}
+          iconHeight={24}
           onPress={() => selectTab("workouts")}
         />
         <NavigationItem
           icon={ExerciseLogo}
           caption={locale.exercises}
           isActive={"exercises" === selected}
-          iconWidth={30}
-          iconHeight={30}
+          iconWidth={24}
+          iconHeight={24}
           onPress={() => selectTab("exercises")}
         />
         <NavigationItem
           icon={SettingsLogo}
           caption={locale.settings}
           isActive={"settings" === selected}
-          iconWidth={30}
-          iconHeight={30}
+          iconWidth={24}
+          iconHeight={24}
           onPress={() => selectTab("settings")}
         />
       </View>
@@ -59,7 +62,7 @@ const BottomNavigation: React.FC<BottomTabBarProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   bottomNav: {
     width: "100%",
-    height: Platform.OS === "android" ? 70 : 90,
+    height: selectForPlatform(90, 65),
     position: "absolute",
     bottom: 0,
     justifyContent: "flex-start",

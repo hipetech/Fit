@@ -1,15 +1,28 @@
 import React, { FunctionComponent } from "react";
 import { Pressable, StyleSheet } from "react-native";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSequence,
+  withSpring,
+} from "react-native-reanimated";
 import { SvgProps } from "react-native-svg";
 import { useShallow } from "zustand/react/shallow";
 
 import Text from "../../../components/text";
 import { useColorsStore } from "../../../store/colorsStore";
+import { FontWeight } from "../../../types/FontWeight.ts";
+
+const SPRING_CONFIG = {
+  restDisplacementThreshold: 0.1,
+  restSpeedThreshold: 20,
+};
 
 interface NavigationItemProps {
   icon: FunctionComponent<SvgProps>;
-  iconWidth?: number;
-  iconHeight?: number;
+  iconWidth: number;
+  iconHeight: number;
   caption: string;
   isActive: boolean;
   onPress?: () => void;
@@ -17,8 +30,8 @@ interface NavigationItemProps {
 
 const NavigationItem: React.FC<NavigationItemProps> = ({
   icon: Icon,
-  iconWidth = 44,
-  iconHeight = 44,
+  iconWidth,
+  iconHeight,
   caption,
   isActive,
   onPress,
@@ -26,18 +39,44 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
   const colors = useColorsStore(useShallow((state) => state.colors));
   const fill = isActive ? colors.orange : colors.white;
 
+  const offset = useSharedValue(0);
+
+  const tap = Gesture.Tap().onEnd(() => {
+    offset.value = withSequence(withSpring(-4, SPRING_CONFIG), withSpring(2, SPRING_CONFIG));
+  });
+
+  const iconStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: offset.value,
+        },
+      ],
+    };
+  });
+
   return (
-    <Pressable
-      style={styles.container}
-      onPress={onPress}
-    >
-      <Icon
-        fill={fill}
-        width={iconWidth}
-        height={iconHeight}
-      />
-      <Text style={{ color: fill }}>{caption}</Text>
-    </Pressable>
+    <GestureDetector gesture={tap}>
+      <Pressable
+        onPress={onPress}
+        style={styles.container}
+      >
+        <Animated.View style={iconStyle}>
+          <Icon
+            fill={fill}
+            width={iconWidth}
+            height={iconHeight}
+          />
+        </Animated.View>
+        <Text
+          fontSize={13}
+          fontWeight={FontWeight.MEDIUM}
+          style={{ color: fill }}
+        >
+          {caption}
+        </Text>
+      </Pressable>
+    </GestureDetector>
   );
 };
 
@@ -46,7 +85,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    height: 51,
+    height: 47,
   },
 });
 

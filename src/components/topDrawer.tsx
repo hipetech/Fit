@@ -4,6 +4,7 @@ import DeviceInfo from "react-native-device-info";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   ReduceMotion,
+  runOnJS,
   useAnimatedProps,
   useAnimatedStyle,
   useSharedValue,
@@ -14,6 +15,7 @@ import { AppEmitter, AppEvents } from "../emmiter.ts";
 import useStyles from "../hooks/useStyles.ts";
 import type { Colors } from "../types/Colors.ts";
 import DragIsland from "../ui/dragIsland.tsx";
+import { HapticFeedback } from "../utils/hapticFeedback.ts";
 import TransparentView from "./transparentView.tsx";
 
 const SPRING_CONFIG = {
@@ -35,6 +37,10 @@ const DRAWER_OPENED_POSITION = -(WINDOW_HEIGHT * 0.45);
 
 const QUICK_OPEN_VELOCITY = 3000;
 const OPEN_POINT = 600;
+
+const gestureImpact = () => {
+  HapticFeedback.mediumImpact();
+};
 
 interface TopDrawerProps {
   children?: ReactNode | ReactNode[];
@@ -76,6 +82,11 @@ const TopDrawer: React.FC<TopDrawerProps> = ({ children }) => {
   }, []);
 
   const panGesture = Gesture.Pan()
+    .onStart(() => {
+      if (!isOpened.value) {
+        runOnJS(gestureImpact)();
+      }
+    })
     .onChange((event) => {
       offset.value = offset.value + event.changeY;
     })
@@ -97,6 +108,7 @@ const TopDrawer: React.FC<TopDrawerProps> = ({ children }) => {
 
   const tapGesture = Gesture.Tap().onStart(() => {
     toggleDrawer(false);
+    runOnJS(gestureImpact)();
   });
 
   useEffect(() => {
