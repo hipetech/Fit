@@ -1,4 +1,4 @@
-import { Colors } from "../types/Colors";
+import type { Colors } from "../types/Colors";
 
 export const lightColors: Colors = {
   black: "#F5EDED",

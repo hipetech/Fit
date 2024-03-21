@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { Theme } from "../types/Theme";
+import type { Theme } from "../types/Theme";
 
 interface ThemeState {
   theme: Theme;

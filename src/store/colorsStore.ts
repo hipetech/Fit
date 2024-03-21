@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 import { lightColors } from "../styles/lightColors";
-import { Colors } from "../types/Colors";
+import type { Colors } from "../types/Colors";
 
 interface ColorsState {
   colors: Colors;

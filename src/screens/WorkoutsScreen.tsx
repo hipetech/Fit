@@ -1,13 +1,9 @@
 import React from "react";
 
-import Workouts from "../modules/workouts";
+import { Workouts } from "../modules/workouts";
 
 const WorkoutsScreen = () => {
-  return (
-    <>
-      <Workouts />
-    </>
-  );
+  return <Workouts />;
 };
 
 export default WorkoutsScreen;
