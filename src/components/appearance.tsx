@@ -1,16 +1,11 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useLayoutEffect } from "react";
-import { type ColorSchemeName, Platform, StatusBar, useColorScheme } from "react-native";
+import { Platform, StatusBar, useColorScheme } from "react-native";
 import changeNavigationBarColor from "react-native-navigation-bar-color";
 
-import { AsyncStorageValues } from "../asyncStorage.ts";
-import { useColorsStore } from "../store/colorsStore";
-import { useThemeStore } from "../store/themeStore";
-import { setColorScheme } from "../utils/setColorScheme.ts";
+import { useAppearanceStore } from "../store/appearanceStore.ts";
 
 const Appearance = () => {
-  const { colors } = useColorsStore();
-  const { theme } = useThemeStore();
+  const { theme, colors, setupAppearance } = useAppearanceStore();
 
   // set navigation color Android only
   useLayoutEffect(() => {
@@ -24,10 +19,7 @@ const Appearance = () => {
 
   // get theme
   useLayoutEffect(() => {
-    AsyncStorage.getItem(AsyncStorageValues.COLOR_THEME).then((savedTheme) => {
-      if (savedTheme) setColorScheme(savedTheme as ColorSchemeName);
-      else setColorScheme(colorTheme);
-    });
+    setupAppearance(colorTheme);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorTheme]);
 
