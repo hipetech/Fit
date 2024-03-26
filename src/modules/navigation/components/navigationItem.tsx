@@ -11,7 +11,7 @@ import type { SvgProps } from "react-native-svg";
 import { useShallow } from "zustand/react/shallow";
 
 import Text from "../../../components/text";
-import { useColorsStore } from "../../../store/colorsStore";
+import { useAppearanceStore } from "../../../store/appearanceStore.ts";
 import { FontWeight } from "../../../types/FontWeight.ts";
 
 const SPRING_CONFIG = {
@@ -36,7 +36,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
   isActive,
   onPress,
 }) => {
-  const colors = useColorsStore(useShallow((state) => state.colors));
+  const colors = useAppearanceStore(useShallow((state) => state.colors));
   const fill = isActive ? colors.orange : colors.white;
 
   const offset = useSharedValue(0);

@@ -2,7 +2,7 @@ import React, { type FunctionComponent, useEffect, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import type { SvgProps } from "react-native-svg";
 
-import { useColorsStore } from "../store/colorsStore";
+import { useAppearanceStore } from "../store/appearanceStore.ts";
 
 interface SmallIconButtonProps {
   Content: FunctionComponent<SvgProps>;
@@ -12,7 +12,7 @@ interface SmallIconButtonProps {
 const SmallIconButton: React.FC<SmallIconButtonProps> = ({ Content, onPress }) => {
   const [fillColor, setFillColor] = useState<string>("");
 
-  const { colors } = useColorsStore();
+  const { colors } = useAppearanceStore();
 
   useEffect(() => {
     setFillColor(colors.white);
