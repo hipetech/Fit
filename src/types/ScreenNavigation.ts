@@ -1,5 +1,5 @@
-import { NavigationContainerRef } from "@react-navigation/native";
+import type { NavigationContainerRef } from "@react-navigation/native";
 
-import { RootStackParamList } from "./RootStackParamList";
+import type { RootStackParamList } from "./RootStackParamList";
 
 export type ScreenNavigation = NavigationContainerRef<RootStackParamList>;

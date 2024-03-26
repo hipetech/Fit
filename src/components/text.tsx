@@ -1,5 +1,5 @@
 import React from "react";
-import { TextProps as TextElementProps } from "react-native";
+import type { TextProps as TextElementProps } from "react-native";
 import { Text as TextElement } from "react-native";
 
 import { FontWeight } from "../types/FontWeight";

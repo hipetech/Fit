@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect } from "react";
-import { Dimensions, StyleSheet, View, ViewProps } from "react-native";
+import React, { type ReactNode, useEffect } from "react";
+import { Dimensions, StyleSheet, View, type ViewProps } from "react-native";
 import DeviceInfo from "react-native-device-info";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {

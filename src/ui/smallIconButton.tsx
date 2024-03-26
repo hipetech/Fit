@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { type FunctionComponent, useEffect, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
-import { SvgProps } from "react-native-svg";
+import type { SvgProps } from "react-native-svg";
 
 import { useColorsStore } from "../store/colorsStore";
 

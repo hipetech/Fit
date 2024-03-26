@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, ViewProps } from "react-native";
+import { StyleSheet, View, type ViewProps } from "react-native";
 
 import useStyles from "../hooks/useStyles";
 import type { Colors } from "../types/Colors";

@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useLayoutEffect } from "react";
-import { ColorSchemeName, Platform, StatusBar, useColorScheme } from "react-native";
+import { type ColorSchemeName, Platform, StatusBar, useColorScheme } from "react-native";
 import changeNavigationBarColor from "react-native-navigation-bar-color";
 
 import { AsyncStorageValues } from "../asyncStorage.ts";

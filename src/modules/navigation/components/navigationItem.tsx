@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
@@ -7,7 +7,7 @@ import Animated, {
   withSequence,
   withSpring,
 } from "react-native-reanimated";
-import { SvgProps } from "react-native-svg";
+import type { SvgProps } from "react-native-svg";
 import { useShallow } from "zustand/react/shallow";
 
 import Text from "../../../components/text";

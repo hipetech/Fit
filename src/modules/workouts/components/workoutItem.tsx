@@ -1,68 +1,43 @@
-import React, { type ReactNode } from "react";
+import React from "react";
 import { Pressable, StyleSheet } from "react-native";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanimated";
+import { type RenderItemParams, ScaleDecorator } from "react-native-draggable-flatlist";
 
+import Text from "../../../components/text.tsx";
 import useStyles from "../../../hooks/useStyles.ts";
 import type { Colors } from "../../../types/Colors.ts";
-import { ITEM_HEIGHT, TOP_POSITION } from "../constants.ts";
 
-interface WorkoutItemProps {
-  children: ReactNode | ReactNode[];
-  index: number;
-}
+type Item = {
+  key: string;
+  label: string;
+  height: number;
+  width: number;
+  backgroundColor: string;
+};
 
-export const WorkoutItem: React.FC<WorkoutItemProps> = ({ index }) => {
+export const WorkoutItem = ({ item, drag, isActive }: RenderItemParams<Item>) => {
   const { styles } = useStyles(style);
-  const isMoving = useSharedValue(false);
-  const topOffset = useSharedValue(TOP_POSITION * index);
-
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateY: topOffset.value }],
-    };
-  });
-
-  const moveGesture = Gesture.Pan()
-    .onChange((event) => {
-      if (isMoving.value) {
-        console.log(JSON.stringify(event, null, 2));
-        topOffset.value = event.translationY;
-      }
-    })
-    .onEnd(() => {
-      isMoving.value = false;
-      topOffset.value = TOP_POSITION * index;
-    });
 
   return (
-    <Animated.View style={[styles.container, animatedStyles]}>
-      <GestureDetector gesture={moveGesture}>
-        <Pressable
-          style={styles.dragLine}
-          onLongPress={() => (isMoving.value = true)}
-        />
-      </GestureDetector>
-    </Animated.View>
+    <ScaleDecorator>
+      <Pressable
+        onLongPress={drag}
+        disabled={isActive}
+        style={styles.workoutItem}
+      >
+        <Text style={styles.text}>{item.label}</Text>
+      </Pressable>
+    </ScaleDecorator>
   );
 };
 
 const style = (colors: Colors) =>
   StyleSheet.create({
-    container: {
-      width: "100%",
-      height: ITEM_HEIGHT,
-      backgroundColor: colors.transparent,
+    workoutItem: {
       borderRadius: 23,
-      justifyContent: "center",
-      alignItems: "flex-end",
-      position: "absolute",
-      paddingHorizontal: 10,
+      height: 140,
+      backgroundColor: colors.black,
     },
-    dragLine: {
-      backgroundColor: colors.white,
-      width: 6,
-      height: 35,
-      borderRadius: 100,
+    text: {
+      fontSize: 24,
     },
   });

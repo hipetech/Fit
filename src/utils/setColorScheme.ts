@@ -1,4 +1,4 @@
-import { ColorSchemeName } from "react-native";
+import type { ColorSchemeName } from "react-native";
 
 import { useColorsStore } from "../store/colorsStore.ts";
 import { useThemeStore } from "../store/themeStore.ts";
