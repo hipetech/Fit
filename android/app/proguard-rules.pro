@@ -13,4 +13,7 @@
   *;
 }
 
+# realm
+-keep class io.realm.react.**
+
 -keep class com.google.android.gms.common.** {*;}
