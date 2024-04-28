@@ -2,12 +2,13 @@ import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 
 import { TopDrawer } from "../../../components/topDrawer.tsx";
+import { Calendar } from "../../calendar";
 
 const Header: React.FC = () => {
   return (
     <View style={[styles.headerContainer, styles.container]}>
       <TopDrawer>
-        <View />
+        <Calendar />
       </TopDrawer>
     </View>
   );

@@ -3,6 +3,7 @@ import { Dimensions, StyleSheet, View, type ViewProps } from "react-native";
 import DeviceInfo from "react-native-device-info";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
+  interpolate,
   ReduceMotion,
   runOnJS,
   useAnimatedProps,
@@ -33,10 +34,10 @@ const WINDOW_HEIGHT = Dimensions.get("window").height;
 const DRAWER_HEIGHT = WINDOW_HEIGHT * 1.2;
 
 const DRAWER_CLOSED_POSITION = -DRAWER_HEIGHT * (DeviceInfo.hasNotch() ? 0.9 : 0.94);
-const DRAWER_OPENED_POSITION = -(WINDOW_HEIGHT * 0.45);
+const DRAWER_OPENED_POSITION = -(WINDOW_HEIGHT * 0.6);
 
 const QUICK_OPEN_VELOCITY = 3000;
-const OPEN_POINT = 600;
+const OPEN_POINT = 750;
 
 const gestureImpact = () => {
   HapticFeedback.mediumImpact();
@@ -79,6 +80,12 @@ const TopDrawer: React.FC<TopDrawerProps> = ({ children }) => {
     return {
       pointerEvents: isOpened.value ? "auto" : "none",
     } as ViewProps;
+  }, []);
+
+  const contentStyle = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(offset.value, [DRAWER_CLOSED_POSITION, DRAWER_OPENED_POSITION], [0, 1]),
+    };
   }, []);
 
   const panGesture = Gesture.Pan()
@@ -125,7 +132,7 @@ const TopDrawer: React.FC<TopDrawerProps> = ({ children }) => {
             style={styles.background}
             accessible={true}
           >
-            <View style={styles.content}>{children}</View>
+            <Animated.View style={[styles.content, contentStyle]}>{children}</Animated.View>
             <View style={styles.touchArea}>
               <DragIsland width={70} />
             </View>
@@ -167,7 +174,7 @@ const style = (colors: Colors) =>
     },
     content: {
       flex: 1,
-      paddingTop: 600,
+      paddingTop: 630,
     },
     backdrop: {
       width: "100%",

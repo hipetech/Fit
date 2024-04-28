@@ -17,10 +17,11 @@ interface AppearanceState {
 }
 
 export const useAppearanceStore = create<AppearanceState>((setState) => ({
-  theme: "light",
+  // TODO: Setup light theme colors
+  theme: "dark",
   setTheme: (theme: Theme) => setState(() => ({ theme: theme })),
 
-  colors: lightColors,
+  colors: darkColors,
   setColors: (colors: Colors) => setState(() => ({ colors: colors })),
 
   setupAppearance: async (colorScheme = "light") => {
