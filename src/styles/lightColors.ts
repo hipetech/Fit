@@ -9,4 +9,5 @@ export const lightColors: Colors = {
   green: "#4AF20E",
   background: "#DCDCDC",
   transparent: "rgba(237,237,237,0.9)",
+  backdrop: "rgba(237,237,237,0.48)",
 };

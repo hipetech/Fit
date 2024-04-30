@@ -4,6 +4,17 @@
       "workouts": "Тренування",
       "exercises": "Вправи",
       "settings": "Налаштування"
+    },
+    "settings": {
+      "theme": "Тема",
+      "themeDialog": {
+        "dialogTitle": "Змінити тему",
+        "radioButtons": {
+          "default": "За замовчуванням",
+          "light": "Світла",
+          "dark": "Темна"
+        }
+      }
     }
   }
 }

@@ -4,6 +4,17 @@
       "workouts": "Workouts",
       "exercises": "Exercises",
       "settings": "Settings"
+    },
+    "settings": {
+      "theme": "Theme",
+      "themeDialog": {
+        "dialogTitle": "Change theme",
+        "radioButtons": {
+          "default": "Default",
+          "light": "Light",
+          "dark": "Dark"
+        }
+      }
     }
   }
 }

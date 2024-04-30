@@ -2,8 +2,8 @@ import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-import TransparentView from "../../../components/transparentView";
 import useLocales from "../../../hooks/useLocales";
+import TransparentView from "../../../ui/transparentView.tsx";
 import { HapticFeedback } from "../../../utils/hapticFeedback.ts";
 import { selectForPlatform } from "../../../utils/selectForPlatform.ts";
 import ExerciseLogo from "../assets/exercises.svg";
@@ -11,11 +11,11 @@ import SettingsLogo from "../assets/settings.svg";
 import WorkoutLogo from "../assets/workouts.svg";
 import NavigationItem from "./navigationItem";
 
-interface Translation {
+type Translation = {
   workouts: string;
   exercises: string;
   settings: string;
-}
+};
 
 const BottomNavigation: React.FC<BottomTabBarProps> = ({ navigation }) => {
   const locale = useLocales<Translation>("navigation");

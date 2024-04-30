@@ -7,4 +7,5 @@ export type Colors = {
   green: string;
   background: string;
   transparent: string;
+  backdrop: string;
 };

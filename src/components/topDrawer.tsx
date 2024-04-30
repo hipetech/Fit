@@ -16,8 +16,8 @@ import { AppEmitter, AppEvents } from "../emmiter.ts";
 import useStyles from "../hooks/useStyles.ts";
 import type { Colors } from "../types/Colors.ts";
 import DragIsland from "../ui/dragIsland.tsx";
+import TransparentView from "../ui/transparentView.tsx";
 import { HapticFeedback } from "../utils/hapticFeedback.ts";
-import TransparentView from "./transparentView.tsx";
 
 const SPRING_CONFIG = {
   duration: 950,
