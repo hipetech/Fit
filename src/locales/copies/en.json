@@ -1,0 +1,29 @@
+{
+  "translation": {
+    "navigation": {
+      "workouts": "Workouts",
+      "exercises": "Exercises",
+      "settings": "Settings"
+    },
+    "settings": {
+      "themeSwitch": {
+        "theme": "Theme",
+        "themeDialog": {
+          "dialogTitle": "Change theme",
+          "radioButtons": {
+            "default": "Default",
+            "light": "Light",
+            "dark": "Dark"
+          }
+        }
+      },
+      "languageSwitch": {
+        "language": "Language",
+        "languageDialog": {
+          "dialogTitle": "Change language",
+          "system": "System language"
+        }
+      }
+    }
+  }
+}

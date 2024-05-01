@@ -5,6 +5,7 @@ import useStyles from "../../hooks/useStyles.ts";
 import type { Colors } from "../../types/Colors.ts";
 import { Dash } from "../../ui/dash.tsx";
 import TransparentView from "../../ui/transparentView.tsx";
+import { LanguageSwitch } from "./components/languageSwitch.tsx";
 import { ThemeSwitch } from "./components/themeSwitch.tsx";
 
 export const Settings = () => {
@@ -18,6 +19,7 @@ export const Settings = () => {
       <TransparentView style={styles.settingsContainer}>
         <ThemeSwitch />
         <Dash />
+        <LanguageSwitch />
       </TransparentView>
     </ScrollView>
   );
@@ -35,7 +37,6 @@ const style = (colors: Colors) =>
     },
     settingsContainer: {
       width: "100%",
-      minHeight: 150,
       borderRadius: 20,
     },
   });

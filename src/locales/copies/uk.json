@@ -1,0 +1,29 @@
+{
+  "translation": {
+    "navigation": {
+      "workouts": "Тренування",
+      "exercises": "Вправи",
+      "settings": "Налаштування"
+    },
+    "settings": {
+      "themeSwitch": {
+        "theme": "Тема",
+        "themeDialog": {
+          "dialogTitle": "Змінити тему",
+          "radioButtons": {
+            "default": "За замовчуванням",
+            "light": "Світла",
+            "dark": "Темна"
+          }
+        }
+      },
+      "languageSwitch": {
+        "language": "Мова",
+        "languageDialog": {
+          "dialogTitle": "Змінити мову",
+          "system": "Мова системи"
+        }
+      }
+    }
+  }
+}

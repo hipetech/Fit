@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 import { type ColorSchemeName, useColorScheme } from "react-native";
 
-import { AsyncStorageValues } from "../../../asyncStorage.ts";
+import { AsyncStorageValues } from "../../../asyncStorageValues.ts";
 import useLocales from "../../../hooks/useLocales.ts";
 import { useAppearanceStore } from "../../../store/appearanceStore.ts";
 import { Dialog } from "../../../ui/dialog.tsx";
@@ -11,7 +11,7 @@ import { RadioGroup } from "../../../ui/radioGroup.tsx";
 import AppearanceIcon from "./../assets/appearanceIcon.svg";
 import { SettingsItem } from "./settingsItem.tsx";
 
-type SettingsTranslations = {
+type ThemeSwitchTranslations = {
   theme: string;
   themeDialog: {
     dialogTitle: string;
@@ -25,7 +25,7 @@ type SettingsTranslations = {
 
 export const ThemeSwitch = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const locales = useLocales<SettingsTranslations>("settings");
+  const locales = useLocales<ThemeSwitchTranslations>("settings.themeSwitch");
 
   const [theme, setTheme] = useState("default");
 
@@ -40,13 +40,8 @@ export const ThemeSwitch = () => {
 
   const handleThemeChange = (value: string) => {
     setTheme(value);
-    AsyncStorage.setItem(AsyncStorageValues.COLOR_THEME, value === "default" ? "" : value).then(
-      () => setIsDialogOpen(false)
-    );
-    setTimeout(
-      () => setupAppearance(value === "default" ? colorTheme : (value as ColorSchemeName)),
-      400
-    );
+    void AsyncStorage.setItem(AsyncStorageValues.COLOR_THEME, value === "default" ? "" : value);
+    setupAppearance(value === "default" ? colorTheme : (value as ColorSchemeName));
   };
 
   return (

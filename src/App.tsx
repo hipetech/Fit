@@ -1,15 +1,28 @@
-import "./i18n";
-
 import { NavigationContainer } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import Appearance from "./components/appearance";
 import { RealmProvider } from "./db";
+import { i18n } from "./locales/i18n.ts";
 import Navigation from "./modules/navigation";
 
 const App = () => {
+  const [isI18nInitialized, setIsI18nInitialized] = useState(false);
+
+  useEffect(() => {
+    const toggleInit = () => setIsI18nInitialized(true);
+    i18n.on("initialized", toggleInit);
+    return () => {
+      i18n.off("initialized", toggleInit);
+    };
+  }, []);
+
+  if (!isI18nInitialized) {
+    return null; // Or a loading spinner
+  }
+
   return (
     <NavigationContainer>
       <GestureHandlerRootView style={styles.gestureContainer}>

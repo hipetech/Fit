@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import type { ColorSchemeName } from "react-native";
 import { create } from "zustand";
 
-import { AsyncStorageValues } from "../asyncStorage.ts";
+import { AsyncStorageValues } from "../asyncStorageValues.ts";
 import { darkColors } from "../styles/darkColors.ts";
 import { lightColors } from "../styles/lightColors.ts";
 import type { Colors } from "../types/Colors.ts";
