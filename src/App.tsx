@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import SplashScreen from "react-native-splash-screen";
 
 import Appearance from "./components/appearance";
 import { RealmProvider } from "./db";
@@ -12,7 +13,10 @@ const App = () => {
   const [isI18nInitialized, setIsI18nInitialized] = useState(false);
 
   useEffect(() => {
-    const toggleInit = () => setIsI18nInitialized(true);
+    const toggleInit = () => {
+      setIsI18nInitialized(true);
+      SplashScreen.hide();
+    };
     i18n.on("initialized", toggleInit);
     return () => {
       i18n.off("initialized", toggleInit);
@@ -20,7 +24,7 @@ const App = () => {
   }, []);
 
   if (!isI18nInitialized) {
-    return null; // Or a loading spinner
+    return null;
   }
 
   return (
