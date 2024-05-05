@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
 
+import { CONTENT_PADDING_TOP } from "../../constants.ts";
 import useStyles from "../../hooks/useStyles.ts";
 import type { Colors } from "../../types/Colors.ts";
 import { Dash } from "../../ui/dash.tsx";
@@ -32,7 +33,7 @@ const style = (colors: Colors) =>
       backgroundColor: colors.background,
     },
     contentContainer: {
-      paddingTop: 120,
+      paddingTop: CONTENT_PADDING_TOP,
       paddingHorizontal: 8,
     },
     settingsContainer: {

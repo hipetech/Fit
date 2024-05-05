@@ -34,8 +34,9 @@ export const LanguageSwitch = () => {
 
   const handleLanguageChange = async (value: Locale) => {
     setLocale(value);
-    AsyncStorage.setItem(AsyncStorageValues.LANGUAGE, value === "system" ? "" : value).then(() =>
-      i18n.changeLanguage(value)
+    const localeValue = value === "system" ? "" : value;
+    AsyncStorage.setItem(AsyncStorageValues.LANGUAGE, localeValue).then(() =>
+      i18n.changeLanguage(localeValue)
     );
   };
 

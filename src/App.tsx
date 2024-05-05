@@ -23,6 +23,11 @@ const App = () => {
     };
   }, []);
 
+  // bundle realm on app start
+  // useEffect(() => {
+  //   (async () => await bundleRealm())();
+  // }, []);
+
   if (!isI18nInitialized) {
     return null;
   }

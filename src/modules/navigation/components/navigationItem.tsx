@@ -12,7 +12,7 @@ import { useShallow } from "zustand/react/shallow";
 
 import { useAppearanceStore } from "../../../store/appearanceStore.ts";
 import { FontWeight } from "../../../types/FontWeight.ts";
-import { Text } from "../../../ui/text.tsx";
+import Text from "../../../ui/text.tsx";
 
 const SPRING_CONFIG = {
   restDisplacementThreshold: 0.1,

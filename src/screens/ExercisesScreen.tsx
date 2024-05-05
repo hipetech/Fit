@@ -1,8 +1,9 @@
 import React from "react";
-import { View } from "react-native";
+
+import { Exercises } from "../modules/exercises";
 
 const ExercisesScreen = () => {
-  return <View></View>;
+  return <Exercises />;
 };
 
 export default ExercisesScreen;

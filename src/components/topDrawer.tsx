@@ -1,5 +1,5 @@
 import React, { type ReactNode, useEffect } from "react";
-import { Dimensions, StyleSheet, View, type ViewProps } from "react-native";
+import { StyleSheet, View, type ViewProps } from "react-native";
 import DeviceInfo from "react-native-device-info";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
@@ -12,6 +12,7 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 
+import { SCREEN_HEIGHT, WINDOW_HEIGHT } from "../constants.ts";
 import { AppEmitter, AppEvents } from "../emmiter.ts";
 import useStyles from "../hooks/useStyles.ts";
 import type { Colors } from "../types/Colors.ts";
@@ -29,8 +30,6 @@ const SPRING_CONFIG = {
   reduceMotion: ReduceMotion.System,
 };
 
-const SCREEN_HEIGHT = Dimensions.get("screen").height;
-const WINDOW_HEIGHT = Dimensions.get("window").height;
 const DRAWER_HEIGHT = WINDOW_HEIGHT * 1.2;
 
 const DRAWER_CLOSED_POSITION = -DRAWER_HEIGHT * (DeviceInfo.hasNotch() ? 0.9 : 0.94);

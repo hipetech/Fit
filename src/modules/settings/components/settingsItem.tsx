@@ -4,7 +4,7 @@ import type { SvgProps } from "react-native-svg";
 import { TouchableOpacity } from "react-native-ui-lib";
 
 import useStyles from "../../../hooks/useStyles.ts";
-import { Text } from "../../../ui/text.tsx";
+import Text from "../../../ui/text.tsx";
 
 interface SettingsContainerProps {
   title: string;
