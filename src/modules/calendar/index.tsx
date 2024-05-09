@@ -5,10 +5,12 @@ import { Calendar as WixCalendar } from "react-native-calendars";
 import { useAppearanceStore } from "../../store/appearanceStore.ts";
 
 export const Calendar = () => {
-  const { colors } = useAppearanceStore();
+  const { colors, theme } = useAppearanceStore();
 
   return (
     <WixCalendar
+      // calendar re-renders only on key prop change
+      key={theme}
       style={styles.container}
       enableSwipeMonths={true}
       theme={{
