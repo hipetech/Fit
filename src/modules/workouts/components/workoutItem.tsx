@@ -4,7 +4,7 @@ import { type RenderItemParams, ScaleDecorator } from "react-native-draggable-fl
 
 import useStyles from "../../../hooks/useStyles.ts";
 import type { Colors } from "../../../types/Colors.ts";
-import Text from "../../../ui/text.tsx";
+import { Text } from "../../../ui/text.tsx";
 
 type Item = {
   key: string;

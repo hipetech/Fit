@@ -141,6 +141,34 @@ async function bundleRealm() {
     });
   }
 
+  // bundle exercises
+  const exercises = realm.objects("Exercise");
+  const newCategories = realm.objects("Category");
+
+  if (!exercises.length) {
+    realm.write(() => {
+      realm.create("Exercise", {
+        _id: new Realm.BSON.ObjectId(),
+        createdAt: new Date(),
+        lastEdit: new Date(),
+        copies: {
+          en: {
+            _id: new Realm.BSON.ObjectId(),
+            title: "Bench press",
+            description: "Bench press description",
+          },
+          uk: {
+            _id: new Realm.BSON.ObjectId(),
+            title: "Жим лежачи",
+            description: "Опис жиму лежачи",
+          },
+        },
+        exerciseItems: [],
+        category: newCategories[0],
+      });
+    });
+  }
+
   realm.close();
 }
 

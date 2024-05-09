@@ -6,7 +6,7 @@ import type { DialogProps as WixDialogProps } from "react-native-ui-lib/src/comp
 import useStyles from "../hooks/useStyles.ts";
 import type { Colors } from "../types/Colors.ts";
 import { Dash } from "./dash.tsx";
-import Text from "./text.tsx";
+import { Text } from "./text.tsx";
 
 type DialogProps = {
   title?: string;

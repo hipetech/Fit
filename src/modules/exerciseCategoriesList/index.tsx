@@ -9,7 +9,7 @@ import type { Colors } from "../../types/Colors.ts";
 import { CategoryItem } from "./components/categoryItem.tsx";
 import { CONTAINER_PADDING, GAP, NUM_COLUMNS } from "./constants.ts";
 
-export const Exercises = () => {
+export const ExerciseCategoriesList = () => {
   const { styles } = useStyles(style);
 
   const categories = useQuery(Category);

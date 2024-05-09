@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
@@ -5,7 +6,8 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import type { Category } from "../../../db/schemas/category.ts";
 import useStyles from "../../../hooks/useStyles.ts";
 import type { Colors } from "../../../types/Colors.ts";
-import Text from "../../../ui/text.tsx";
+import type { ScreenNavigation } from "../../../types/ScreenNavigation.ts";
+import { Text } from "../../../ui/text.tsx";
 import { categoriesAssets } from "../assetsTree.ts";
 import { ITEM_SIZE } from "../constants.ts";
 
@@ -22,8 +24,13 @@ export const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
 
   const Icon = categoriesAssets[category.image as keyof typeof categoriesAssets];
 
+  const navigation = useNavigation<ScreenNavigation>();
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigation.navigate("exercise-list", { categoryId: category._id.toString() })}
+    >
       <View style={styles.textContainer}>
         <Text fontSize={28}>{category.copies[languageCode].title}</Text>
         <View style={[styles.underline, { borderBottomColor: category.color }]} />

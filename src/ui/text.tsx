@@ -12,7 +12,7 @@ interface TextProps extends TextElementProps {
   color?: string;
 }
 
-const Text: React.FC<TextProps> = ({
+export const Text: React.FC<TextProps> = ({
   children,
   fontSize = 14,
   fontWeight = FontWeight.REGULAR,
@@ -37,5 +37,3 @@ const Text: React.FC<TextProps> = ({
     </TextElement>
   );
 };
-
-export default Text;

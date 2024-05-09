@@ -1,13 +1,22 @@
-import { NavigationContainer } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { enableFreeze, enableScreens } from "react-native-screens";
 import SplashScreen from "react-native-splash-screen";
 
 import Appearance from "./components/appearance";
 import { RealmProvider } from "./db";
 import { i18n } from "./locales/i18n.ts";
 import Navigation from "./modules/navigation";
+
+// fix for 'No view found for id 0x26e' error
+// React navigation nested stacks on androidx
+if (Platform.OS === "android") {
+  enableScreens(false);
+}
+
+// Experimental: might improve navigation performance
+enableFreeze(true);
 
 const App = () => {
   const [isI18nInitialized, setIsI18nInitialized] = useState(false);
@@ -33,14 +42,12 @@ const App = () => {
   }
 
   return (
-    <NavigationContainer>
-      <GestureHandlerRootView style={styles.gestureContainer}>
-        <Appearance />
-        <RealmProvider>
-          <Navigation />
-        </RealmProvider>
-      </GestureHandlerRootView>
-    </NavigationContainer>
+    <GestureHandlerRootView style={styles.gestureContainer}>
+      <Appearance />
+      <RealmProvider>
+        <Navigation />
+      </RealmProvider>
+    </GestureHandlerRootView>
   );
 };
 
