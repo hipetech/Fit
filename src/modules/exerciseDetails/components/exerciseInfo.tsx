@@ -59,6 +59,7 @@ const style = (color: Colors) =>
       position: "absolute",
       left: 10,
       top: 10,
+      zIndex: 2,
     },
     header: {
       width: "100%",
