@@ -4,10 +4,13 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { enableFreeze, enableScreens } from "react-native-screens";
 import SplashScreen from "react-native-splash-screen";
 
-import Appearance from "./components/appearance";
+import StatusBar from "./components/statusBar.tsx";
 import { RealmProvider } from "./db";
 import { i18n } from "./locales/i18n.ts";
 import Navigation from "./modules/navigation";
+import { initializeAppearance } from "./utils/initializeAppearance.ts";
+
+void initializeAppearance();
 
 // fix for 'No view found for id 0x26e' error
 // React navigation nested stacks on androidx
@@ -43,7 +46,7 @@ const App = () => {
 
   return (
     <GestureHandlerRootView style={styles.gestureContainer}>
-      <Appearance />
+      <StatusBar />
       <RealmProvider>
         <Navigation />
       </RealmProvider>

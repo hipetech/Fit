@@ -6,6 +6,7 @@ export class Workout extends Realm.Object<Workout> {
   _id!: BSON.ObjectId;
   createdAt!: Date;
   lastEdit!: Date;
+  workoutDate!: Date;
   comment!: string;
   workoutItems!: Realm.List<WorkoutItem>;
 
@@ -16,6 +17,7 @@ export class Workout extends Realm.Object<Workout> {
       _id: "objectId",
       createdAt: "date",
       lastEdit: "date",
+      workoutDate: "date",
       comment: "string",
       workoutItems: "WorkoutItem[]",
     },

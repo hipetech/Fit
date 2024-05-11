@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
-import { type ColorSchemeName, useColorScheme } from "react-native";
+import { Appearance, type ColorSchemeName } from "react-native";
 
 import { AsyncStorageValues } from "../../../asyncStorageValues.ts";
 import useLocales from "../../../hooks/useLocales.ts";
@@ -28,6 +28,7 @@ export const ThemeSwitch = () => {
   const locales = useLocales<ThemeSwitchTranslations>("settings.themeSwitch");
 
   const [theme, setTheme] = useState("default");
+  const { setupAppearance } = useAppearanceStore();
 
   useEffect(() => {
     AsyncStorage.getItem(AsyncStorageValues.COLOR_THEME).then((colorTheme) =>
@@ -35,13 +36,10 @@ export const ThemeSwitch = () => {
     );
   }, []);
 
-  const { setupAppearance } = useAppearanceStore();
-  const colorTheme = useColorScheme();
-
   const handleThemeChange = (value: string) => {
     setTheme(value);
     void AsyncStorage.setItem(AsyncStorageValues.COLOR_THEME, value === "default" ? "" : value);
-    setupAppearance(value === "default" ? colorTheme : (value as ColorSchemeName));
+    setupAppearance(value === "default" ? Appearance.getColorScheme() : (value as ColorSchemeName));
   };
 
   return (

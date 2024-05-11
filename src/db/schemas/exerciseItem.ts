@@ -2,6 +2,7 @@ import { BSON, Realm } from "realm";
 
 import type { Exercise } from "./exercise.ts";
 import type { Set } from "./set.ts";
+import type { WorkoutItem } from "./workoutItem.ts";
 
 export class ExerciseItem extends Realm.Object<ExerciseItem> {
   _id!: BSON.ObjectId;
@@ -9,6 +10,7 @@ export class ExerciseItem extends Realm.Object<ExerciseItem> {
   lastEdit!: Date;
   sets!: Realm.List<Set>;
   exercise!: Exercise;
+  workoutItem!: WorkoutItem;
 
   static schema: Realm.ObjectSchema = {
     name: "ExerciseItem",
@@ -19,6 +21,12 @@ export class ExerciseItem extends Realm.Object<ExerciseItem> {
       lastEdit: "date",
       sets: "Set[]",
       exercise: "Exercise",
+
+      workoutItem: {
+        type: "linkingObjects",
+        objectType: "WorkoutItem",
+        property: "exerciseItems",
+      },
     },
   };
 }
