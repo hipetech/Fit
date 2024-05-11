@@ -1,8 +1,8 @@
 import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 
-import { TopDrawer } from "../../../components/topDrawer.tsx";
-import { Calendar } from "../../calendar";
+import { Calendar } from "../../../components/calendar.tsx";
+import { TopDrawer } from "../../topDrawer";
 
 const Header: React.FC = () => {
   return (

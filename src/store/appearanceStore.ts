@@ -8,13 +8,13 @@ import { lightColors } from "../styles/lightColors.ts";
 import type { Colors } from "../types/Colors.ts";
 import type { Theme } from "../types/Theme";
 
-interface AppearanceState {
+type AppearanceState = {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   colors: Colors;
   setColors: (colors: Colors) => void;
   setupAppearance: (colorScheme: ColorSchemeName) => void;
-}
+};
 
 export const useAppearanceStore = create<AppearanceState>((setState) => ({
   // TODO: Setup light theme colors

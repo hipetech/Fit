@@ -12,13 +12,16 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 
-import { SCREEN_HEIGHT, WINDOW_HEIGHT } from "../constants.ts";
-import { AppEmitter, AppEvents } from "../emmiter.ts";
-import useStyles from "../hooks/useStyles.ts";
-import type { Colors } from "../types/Colors.ts";
-import DragIsland from "../ui/dragIsland.tsx";
-import TransparentView from "../ui/transparentView.tsx";
-import { HapticFeedback } from "../utils/hapticFeedback.ts";
+import { SCREEN_HEIGHT, WINDOW_HEIGHT } from "../../constants.ts";
+import { AppEmitter, AppEvents } from "../../emmiter.ts";
+import useStyles from "../../hooks/useStyles.ts";
+import type { Colors } from "../../types/Colors.ts";
+import DragIsland from "../../ui/dragIsland.tsx";
+import TransparentView from "../../ui/transparentView.tsx";
+import { HapticFeedback } from "../../utils/hapticFeedback.ts";
+import { selectForPlatform } from "../../utils/selectForPlatform.ts";
+import { CurrentDate } from "./components/currentDate.tsx";
+import { CurrentWorkout } from "./components/currentWorkout.tsx";
 
 const SPRING_CONFIG = {
   duration: 950,
@@ -87,6 +90,12 @@ const TopDrawer: React.FC<TopDrawerProps> = ({ children }) => {
     };
   }, []);
 
+  const touchAreaItemStyle = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(offset.value, [DRAWER_CLOSED_POSITION, DRAWER_OPENED_POSITION], [1, 0]),
+    };
+  }, []);
+
   const panGesture = Gesture.Pan()
     .onStart(() => {
       if (!isOpened.value) {
@@ -133,7 +142,15 @@ const TopDrawer: React.FC<TopDrawerProps> = ({ children }) => {
           >
             <Animated.View style={[styles.content, contentStyle]}>{children}</Animated.View>
             <View style={styles.touchArea}>
-              <DragIsland width={70} />
+              <Animated.View style={[styles.currentWorkout, touchAreaItemStyle]}>
+                <CurrentWorkout />
+              </Animated.View>
+              <Animated.View style={contentStyle}>
+                <DragIsland width={70} />
+              </Animated.View>
+              <Animated.View style={[styles.currentDate, touchAreaItemStyle]}>
+                <CurrentDate />
+              </Animated.View>
             </View>
           </TransparentView>
         </GestureDetector>
@@ -153,7 +170,7 @@ const style = (colors: Colors) =>
     container: {
       width: "100%",
       height: DRAWER_HEIGHT,
-      zIndex: 100,
+      zIndex: 21,
       position: "absolute",
       top: 0,
     },
@@ -173,7 +190,8 @@ const style = (colors: Colors) =>
     },
     content: {
       flex: 1,
-      paddingTop: 630,
+      paddingTop: selectForPlatform(630, 500),
+      zIndex: 22,
     },
     backdrop: {
       width: "100%",
@@ -181,6 +199,17 @@ const style = (colors: Colors) =>
       backgroundColor: colors.black,
       position: "absolute",
       bottom: -SCREEN_HEIGHT,
+      zIndex: 20,
+    },
+    currentWorkout: {
+      position: "absolute",
+      left: 20,
+      bottom: 30,
+    },
+    currentDate: {
+      position: "absolute",
+      right: 20,
+      bottom: 30,
     },
   });
 
