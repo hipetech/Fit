@@ -37,7 +37,6 @@ export const WorkoutList = () => {
   const { styles } = useStyles(style);
   const [data, setData] = useState(initialData);
 
-  console.log("hello world");
   return (
     <DraggableFlatList
       data={data}

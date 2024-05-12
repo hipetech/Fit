@@ -4,22 +4,28 @@ import { useTranslation } from "react-i18next";
 import { FlatList, StyleSheet, View } from "react-native";
 import { BSON } from "realm";
 
-import { useObject } from "../../db";
+import { useObject, useRealm } from "../../db";
 import { Category } from "../../db/schemas/category.ts";
 import useStyles from "../../hooks/useStyles.ts";
+import useWorkout from "../../hooks/useWorkout.ts";
+import { useDateStore } from "../../store/dateStore.ts";
 import type { Colors } from "../../types/Colors.ts";
 import type { ExerciseNavigatorParamList } from "../../types/ExerciseNavigatorParamList.ts";
+import type { Locale } from "../../types/Locale.ts";
 import { ExerciseItem } from "./components/exerciseItem.tsx";
 import { ExerciseListHeader } from "./components/exerciseListHeader.tsx";
 
 export const ExerciseList: React.FC<
   StackScreenProps<ExerciseNavigatorParamList, "exercise-list">
-> = ({ route }) => {
-  // we parse ObjectId from the string instead of passing the type directly
-  // to avoid "Non-serializable values were found in the navigation state" error
-  // in react-navigation
+> = ({ navigation, route }) => {
   const category = useObject(Category, new BSON.ObjectId(route.params?.categoryId));
   const { exercises } = category || {};
+
+  const workout = useWorkout();
+
+  const { date } = useDateStore();
+
+  const realm = useRealm();
 
   const {
     i18n: { language },
@@ -38,7 +44,16 @@ export const ExerciseList: React.FC<
         </View>
         <FlatList
           data={exercises}
-          renderItem={({ item }) => <ExerciseItem exercise={item} />}
+          renderItem={({ item }) => (
+            <ExerciseItem
+              workout={workout}
+              exercise={item}
+              date={date}
+              realm={realm}
+              language={language as Locale}
+              navigation={navigation}
+            />
+          )}
           style={styles.exerciseList}
           contentContainerStyle={styles.contentContainer}
         />
@@ -68,5 +83,6 @@ const style = (color: Colors) =>
     contentContainer: {
       paddingTop: 200,
       paddingHorizontal: 10,
+      gap: 10,
     },
   });

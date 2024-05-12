@@ -17,7 +17,7 @@ export const Calendar = () => {
       showSixWeeks={true}
       horizontal={true}
       pagingEnabled={true}
-      onDayPress={(day) => setDate(new Date(day.timestamp))}
+      onDayPress={(day) => setDate(new Date(day.dateString))}
       disableAllTouchEventsForDisabledDays={true}
       markedDates={{
         [date.toISOString().split("T")[0]]: {

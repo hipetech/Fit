@@ -166,6 +166,44 @@ async function bundleRealm() {
         exerciseItems: [],
         category: newCategories[0],
       });
+      realm.create("Exercise", {
+        _id: new Realm.BSON.ObjectId(),
+        createdAt: new Date(),
+        lastEdit: new Date(),
+        copies: {
+          en: {
+            _id: new Realm.BSON.ObjectId(),
+            title: "Dumbbell press",
+            description: "Dumbbell press description",
+          },
+          uk: {
+            _id: new Realm.BSON.ObjectId(),
+            title: "Жим гантелей",
+            description: "Опис жиму гантелей",
+          },
+        },
+        exerciseItems: [],
+        category: newCategories[0],
+      });
+      realm.create("Exercise", {
+        _id: new Realm.BSON.ObjectId(),
+        createdAt: new Date(),
+        lastEdit: new Date(),
+        copies: {
+          en: {
+            _id: new Realm.BSON.ObjectId(),
+            title: "Push-ups",
+            description: "Push-ups description",
+          },
+          uk: {
+            _id: new Realm.BSON.ObjectId(),
+            title: "Віджимання",
+            description: "Опис віджимань",
+          },
+        },
+        exerciseItems: [],
+        category: newCategories[0],
+      });
     });
   }
 

@@ -1,11 +1,12 @@
 import "react-native-gesture-handler";
+import "react-native-get-random-values";
 
 import { AppRegistry, Platform } from "react-native";
 import { enableFreeze, enableScreens } from "react-native-screens";
 
 import { name as appName } from "./app.json";
 import App from "./src/App";
-import { getDeveloperInfo } from "./src/utils/getDeveloperInfo";
+import { getDeveloperInfo } from "./src/utils/getDeveloperInfo.ts";
 import { initializeAppearance } from "./src/utils/initializeAppearance";
 
 getDeveloperInfo();

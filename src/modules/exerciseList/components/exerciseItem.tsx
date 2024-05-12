@@ -1,28 +1,76 @@
-import { useNavigation } from "@react-navigation/native";
+import type { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native-ui-lib";
+import Realm from "realm";
 
+import Minus from "../../../assets/icons/minus.svg";
 import Plus from "../../../assets/icons/plus.svg";
+import { createExerciseItem } from "../../../db/helpers/createExerciseItem.ts";
+import { createWorkout } from "../../../db/helpers/createWorkout.ts";
+import { createWorkoutItem } from "../../../db/helpers/createWorkoutItem.ts";
 import type { Exercise } from "../../../db/schemas/exercise.ts";
+import type { ExerciseItem as ExerciseItemType } from "../../../db/schemas/exerciseItem.ts";
+import { Workout } from "../../../db/schemas/workout.ts";
 import useStyles from "../../../hooks/useStyles.ts";
 import type { Colors } from "../../../types/Colors.ts";
-import type { ScreenNavigation } from "../../../types/ScreenNavigation.ts";
+import type { ExerciseNavigatorParamList } from "../../../types/ExerciseNavigatorParamList.ts";
+import type { Locale } from "../../../types/Locale.ts";
 import { Button } from "../../../ui/button.tsx";
 import { Text } from "../../../ui/text.tsx";
+import { calculateExerciseCount } from "../utils/calculateExerciseCount.ts";
 
 interface ExerciseItemProps {
   exercise: Exercise;
+  workout: Workout | undefined;
+  date: Date;
+  realm: Realm;
+  language: Locale;
+  navigation: StackNavigationProp<ExerciseNavigatorParamList, "exercise-list">;
 }
 
-export const ExerciseItem: React.FC<ExerciseItemProps> = ({ exercise }) => {
+export const ExerciseItem: React.FC<ExerciseItemProps> = ({
+  exercise,
+  workout,
+  date,
+  realm,
+  language,
+  navigation,
+}) => {
   const { styles, colors } = useStyles(style);
-  const { navigate } = useNavigation<ScreenNavigation>();
+  const { navigate } = navigation;
 
-  const {
-    i18n: { language },
-  } = useTranslation();
+  const count = calculateExerciseCount(exercise, workout);
+
+  const addExercise = () => {
+    const workoutItem = createWorkoutItem([createExerciseItem(exercise)]);
+    realm.write(() => {
+      if (!workout) {
+        realm.create(Workout, createWorkout(date, [workoutItem]));
+      } else {
+        workout.lastEdit = new Date();
+        workout.workoutItems.push(workoutItem);
+      }
+    });
+  };
+
+  const removeExercise = () => {
+    if (workout) {
+      const latestExercise: ExerciseItemType[] = [];
+
+      workout.workoutItems.forEach((workoutItem) => {
+        workoutItem.exerciseItems.forEach((exerciseItem) => {
+          if (exerciseItem.exercise._id.equals(exercise._id)) {
+            latestExercise.push(exerciseItem);
+          }
+        });
+      });
+
+      realm.write(() => {
+        realm.delete(latestExercise.at(-1));
+      });
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -31,12 +79,32 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({ exercise }) => {
       >
         <Text fontSize={18}>{exercise.copies[language].title}</Text>
       </TouchableOpacity>
-      <Button
-        round={true}
-        backgroundColor={colors.background}
-      >
-        <Plus fill={colors.white} />
-      </Button>
+      <View style={styles.counterSection}>
+        {count > 0 && (
+          <>
+            <Button
+              onPress={removeExercise}
+              round={true}
+              backgroundColor={colors.background}
+            >
+              <Minus fill={colors.white} />
+            </Button>
+            <Text
+              fontSize={16}
+              style={styles.counter}
+            >
+              {count.toString()}
+            </Text>
+          </>
+        )}
+        <Button
+          onPress={addExercise}
+          round={true}
+          backgroundColor={colors.background}
+        >
+          <Plus fill={colors.white} />
+        </Button>
+      </View>
     </View>
   );
 };
@@ -52,5 +120,12 @@ const style = (colors: Colors) =>
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
+    },
+    counterSection: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+    counter: {
+      marginHorizontal: 12,
     },
   });

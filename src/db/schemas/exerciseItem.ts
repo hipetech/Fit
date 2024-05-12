@@ -10,7 +10,8 @@ export class ExerciseItem extends Realm.Object<ExerciseItem> {
   lastEdit!: Date;
   sets!: Realm.List<Set>;
   exercise!: Exercise;
-  workoutItem!: WorkoutItem;
+
+  workoutItem!: Realm.List<WorkoutItem>;
 
   static schema: Realm.ObjectSchema = {
     name: "ExerciseItem",
