@@ -77,7 +77,6 @@ const style = (color: Colors) =>
       zIndex: 1,
     },
     exerciseList: {
-      flex: 1,
       backgroundColor: color.background,
     },
     contentContainer: {

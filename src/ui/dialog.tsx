@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { KeyboardAvoidingView, StyleSheet, View } from "react-native";
 import { Dialog as WixDialog } from "react-native-ui-lib";
 import type { DialogProps as WixDialogProps } from "react-native-ui-lib/src/components/dialog";
 
@@ -24,21 +24,23 @@ export const Dialog: React.FC<DialogProps> = ({
   const { styles, colors } = useStyles(style);
 
   return (
-    <WixDialog
-      containerStyle={[containerStyle, styles.dialog]}
-      useSafeArea={useSafeArea}
-      bottom={bottom}
-      overlayBackgroundColor={overlayBackgroundColor ?? colors.backdrop}
-      {...props}
-    >
-      {title && (
-        <View style={styles.header}>
-          <Text fontSize={16}>{title}</Text>
-        </View>
-      )}
-      {title && <Dash />}
-      <View style={styles.children}>{children}</View>
-    </WixDialog>
+    <KeyboardAvoidingView>
+      <WixDialog
+        containerStyle={[containerStyle, styles.dialog]}
+        useSafeArea={useSafeArea}
+        bottom={bottom}
+        overlayBackgroundColor={overlayBackgroundColor ?? colors.backdrop}
+        {...props}
+      >
+        {title && (
+          <View style={styles.header}>
+            <Text fontSize={16}>{title}</Text>
+          </View>
+        )}
+        {title && <Dash />}
+        <View style={styles.children}>{children}</View>
+      </WixDialog>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -45,30 +45,41 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
   const addExercise = () => {
     const workoutItem = createWorkoutItem([createExerciseItem(exercise)]);
     realm.write(() => {
-      if (!workout) {
-        realm.create(Workout, createWorkout(date, [workoutItem]));
-      } else {
-        workout.lastEdit = new Date();
+      if (workout) {
         workout.workoutItems.push(workoutItem);
+      } else {
+        realm.create("Workout", createWorkout(date, [workoutItem]));
       }
     });
   };
 
   const removeExercise = () => {
     if (workout) {
-      const latestExercise: ExerciseItemType[] = [];
+      const latestExercises: ExerciseItemType[] = [];
 
       workout.workoutItems.forEach((workoutItem) => {
         workoutItem.exerciseItems.forEach((exerciseItem) => {
           if (exerciseItem.exercise._id.equals(exercise._id)) {
-            latestExercise.push(exerciseItem);
+            latestExercises.push(exerciseItem);
           }
         });
       });
 
-      realm.write(() => {
-        realm.delete(latestExercise.at(-1));
-      });
+      const latestExercise = latestExercises.at(-1);
+
+      if (latestExercise) {
+        realm.write(() => {
+          if (latestExercise.workoutItem[0].exerciseItems.length === 1) {
+            realm.delete(latestExercise.workoutItem[0]);
+          }
+
+          if (workout.workoutItems.length === 0) {
+            realm.delete(workout);
+          }
+
+          realm.delete(latestExercises.at(-1));
+        });
+      }
     }
   };
 
