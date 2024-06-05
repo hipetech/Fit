@@ -2,8 +2,10 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet } from "react-native";
 import DraggableFlatList from "react-native-draggable-flatlist";
+import { List } from "realm";
 
 import { CONTENT_PADDING_TOP } from "../../constants.ts";
+import { useRealm } from "../../db";
 import type { WorkoutItem as WorkoutItemType } from "../../db/schemas/workoutItem.ts";
 import useStyles from "../../hooks/useStyles.ts";
 import useWorkout from "../../hooks/useWorkout.ts";
@@ -14,15 +16,26 @@ import { WorkoutItem } from "./components/workoutItem.tsx";
 
 export const Workouts = () => {
   const { styles } = useStyles(style);
-  const { workoutItems = [] } = useWorkout() || {};
+  const workout = useWorkout();
+  const realm = useRealm();
+
+  const { workoutItems = [] } = workout || {};
 
   const { i18n } = useTranslation();
+
+  const updateWorkout = (workoutItems: WorkoutItemType[]) => {
+    if (workout) {
+      realm.write(() => {
+        workout.workoutItems = workoutItems as unknown as List<WorkoutItemType>;
+      });
+    }
+  };
 
   return (
     <>
       <DraggableFlatList
         data={workoutItems as WorkoutItemType[]}
-        onDragEnd={({ data }) => console.log(data)}
+        onDragEnd={({ data }) => updateWorkout(data)}
         keyExtractor={(item) => item._id.toString()}
         renderItem={({ ...props }) => (
           <WorkoutItem
