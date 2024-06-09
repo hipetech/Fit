@@ -5,4 +5,5 @@ export const AppEmitter = new EventEmitter();
 export enum AppEvents {
   OPEN_DRAWER = "open-drawer",
   OPEN_ADD_SET_MODAL = "open-add-set-modal",
+  OPEN_EDIT_SET_MODAL = "open-edit-set-modal",
 }

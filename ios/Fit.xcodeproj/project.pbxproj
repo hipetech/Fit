@@ -18,13 +18,6 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9ECC456006B44DAB8C8098CD /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92F1552AD2CE484AB8A0317E /* Roboto-Regular.ttf */; };
 		AD275EBB441C481FA1DE6906 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D552CD2F3CB40619B3CCB0C /* Roboto-Thin.ttf */; };
-		B94236F52AC4775000E56B55 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94236F42AC4775000E56B55 /* WidgetKit.framework */; };
-		B94236F72AC4775000E56B55 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94236F62AC4775000E56B55 /* SwiftUI.framework */; };
-		B94236FA2AC4775000E56B55 /* fitWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94236F92AC4775000E56B55 /* fitWidgetBundle.swift */; };
-		B94236FC2AC4775000E56B55 /* fitWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94236FB2AC4775000E56B55 /* fitWidget.swift */; };
-		B94236FE2AC4775000E56B55 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94236FD2AC4775000E56B55 /* AppIntent.swift */; };
-		B94237002AC4775100E56B55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94236FF2AC4775100E56B55 /* Assets.xcassets */; };
-		B94237042AC4775100E56B55 /* fitWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B94236F32AC4775000E56B55 /* fitWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D544BDAE4DA14EF085B7BDBB /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA72476D13524DB0ADC53E3D /* Roboto-Light.ttf */; };
 /* End PBXBuildFile section */
 
@@ -36,26 +29,18 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = Fit;
 		};
-		B94237022AC4775100E56B55 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B94236F22AC4775000E56B55;
-			remoteInfo = fitWidgetExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B94237052AC4775100E56B55 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B94237042AC4775100E56B55 /* fitWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -78,7 +63,6 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Fit/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Fit-FitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit-FitTests.release.xcconfig"; path = "Target Support Files/Pods-Fit-FitTests/Pods-Fit-FitTests.release.xcconfig"; sourceTree = "<group>"; };
 		92F1552AD2CE484AB8A0317E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		B94236F32AC4775000E56B55 /* fitWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = fitWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94236F42AC4775000E56B55 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B94236F62AC4775000E56B55 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B94236F92AC4775000E56B55 /* fitWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fitWidgetBundle.swift; sourceTree = "<group>"; };
@@ -106,15 +90,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C80B921A6F3F58F76C31292 /* libPods-Fit.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B94236F02AC4775000E56B55 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B94236F72AC4775000E56B55 /* SwiftUI.framework in Frameworks */,
-				B94236F52AC4775000E56B55 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +179,6 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* Fit.app */,
 				00E356EE1AD99517003FC87E /* FitTests.xctest */,
-				B94236F32AC4775000E56B55 /* fitWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,29 +246,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				B94237032AC4775100E56B55 /* PBXTargetDependency */,
 			);
 			name = Fit;
 			productName = Fit;
 			productReference = 13B07F961A680F5B00A75B9A /* Fit.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B94236F22AC4775000E56B55 /* fitWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B94237082AC4775100E56B55 /* Build configuration list for PBXNativeTarget "fitWidgetExtension" */;
-			buildPhases = (
-				B94236EF2AC4775000E56B55 /* Sources */,
-				B94236F02AC4775000E56B55 /* Frameworks */,
-				B94236F12AC4775000E56B55 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = fitWidgetExtension;
-			productName = fitWidgetExtension;
-			productReference = B94236F32AC4775000E56B55 /* fitWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -311,9 +267,6 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
-					};
-					B94236F22AC4775000E56B55 = {
-						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
@@ -332,7 +285,6 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* Fit */,
 				00E356ED1AD99517003FC87E /* FitTests */,
-				B94236F22AC4775000E56B55 /* fitWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -356,14 +308,6 @@
 				3AFDB67C90234DC89897244E /* Roboto-Medium.ttf in Resources */,
 				9ECC456006B44DAB8C8098CD /* Roboto-Regular.ttf in Resources */,
 				AD275EBB441C481FA1DE6906 /* Roboto-Thin.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B94236F12AC4775000E56B55 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B94237002AC4775100E56B55 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,16 +462,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B94236EF2AC4775000E56B55 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B94236FA2AC4775000E56B55 /* fitWidgetBundle.swift in Sources */,
-				B94236FC2AC4775000E56B55 /* fitWidget.swift in Sources */,
-				B94236FE2AC4775000E56B55 /* AppIntent.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -535,11 +469,6 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* Fit */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
-		};
-		B94237032AC4775100E56B55 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B94236F22AC4775000E56B55 /* fitWidgetExtension */;
-			targetProxy = B94237022AC4775100E56B55 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -603,6 +532,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BL898J4D3L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Fit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -615,7 +545,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.adfadsf;
 				PRODUCT_NAME = Fit;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -631,6 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BL898J4D3L;
 				INFOPLIST_FILE = Fit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -642,7 +573,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.adfadsf;
 				PRODUCT_NAME = Fit;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -794,89 +725,6 @@
 			};
 			name = Release;
 		};
-		B94237062AC4775100E56B55 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = fitWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = fitWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.Fit.fitWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B94237072AC4775100E56B55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = fitWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = fitWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.Fit.fitWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -903,15 +751,6 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B94237082AC4775100E56B55 /* Build configuration list for PBXNativeTarget "fitWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B94237062AC4775100E56B55 /* Debug */,
-				B94237072AC4775100E56B55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -6,6 +6,7 @@ export class Set extends Realm.Object<Set> {
   _id!: BSON.ObjectId;
   value!: number;
   units!: string;
+  reps!: number;
   createdAt!: Date;
   lastEdit!: Date;
   exerciseItem!: ExerciseItem;
@@ -17,6 +18,7 @@ export class Set extends Realm.Object<Set> {
       _id: "objectId",
       value: "float",
       units: "string",
+      reps: "int",
       createdAt: "date",
       lastEdit: "date",
 

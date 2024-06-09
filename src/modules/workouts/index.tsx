@@ -12,6 +12,7 @@ import useWorkout from "../../hooks/useWorkout.ts";
 import type { Colors } from "../../types/Colors.ts";
 import { selectForPlatform } from "../../utils/selectForPlatform.ts";
 import { AddSetModal } from "./components/addSetModal.tsx";
+import { UpdateSetModal } from "./components/updateSetModal.tsx";
 import { WorkoutItem } from "./components/workoutItem.tsx";
 
 export const Workouts = () => {
@@ -48,6 +49,7 @@ export const Workouts = () => {
         showsVerticalScrollIndicator={false}
       />
       <AddSetModal />
+      <UpdateSetModal />
     </>
   );
 };

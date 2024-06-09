@@ -5,6 +5,21 @@
       "exercises": "Exercises",
       "settings": "Settings"
     },
+    "workout": {
+      "addSetModal": {
+        "title": "Add set to exercise: {{value}}",
+        "titleEdit": "Edit set",
+        "form": {
+          "weight": "Weight",
+          "reps": "Reps",
+          "addSet": "Add set",
+          "removeSet": "Remove set"
+        }
+      },
+      "setItem": {
+        "reps": "rep."
+      }
+    },
     "settings": {
       "themeSwitch": {
         "theme": "Theme",

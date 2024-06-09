@@ -146,7 +146,7 @@ const TopDrawer: React.FC<TopDrawerProps> = ({ children }) => {
                 <CurrentWorkout />
               </Animated.View>
               <Animated.View style={contentStyle}>
-                <DragIsland width={70} />
+                <DragIsland size={70} />
               </Animated.View>
               <Animated.View style={[styles.currentDate, touchAreaItemStyle]}>
                 <CurrentDate />

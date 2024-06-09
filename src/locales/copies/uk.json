@@ -5,6 +5,21 @@
       "exercises": "Вправи",
       "settings": "Налаштування"
     },
+    "workout": {
+      "addSetModal": {
+        "title": "Додати підхід до вправи: {{value}}",
+        "titleEdit": "Редагувати підхід",
+        "form": {
+          "weight": "Вага",
+          "reps": "Повтори",
+          "addSet": "Додати підхід",
+          "removeSet": "Видалити підхід"
+        }
+      },
+      "setItem": {
+        "reps": "повт."
+      }
+    },
     "settings": {
       "themeSwitch": {
         "theme": "Тема",
