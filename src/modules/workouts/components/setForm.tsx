@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
 import { StyleSheet, View } from "react-native";
-import { TouchableOpacity } from "react-native-ui-lib";
+import { type TextFieldRef, TouchableOpacity } from "react-native-ui-lib";
 
 import { useRealm } from "../../../db";
 import { createSet } from "../../../db/helpers/createSet.ts";
@@ -29,9 +29,9 @@ type FormValues = {
 };
 
 interface SetFormProps {
+  closeModal: () => void;
   exerciseItem?: ExerciseItem;
   set?: Set;
-  closeModal?: () => void;
 }
 
 export const SetForm: React.FC<SetFormProps> = ({ exerciseItem, set, closeModal }) => {
@@ -39,10 +39,12 @@ export const SetForm: React.FC<SetFormProps> = ({ exerciseItem, set, closeModal 
   const realm = useRealm();
 
   const locales = useLocales<AddSetFormLocales>("workout.addSetModal.form");
+
+  const prevSet = exerciseItem?.sets.at(-1);
   const methods = useForm<FormValues>({
     defaultValues: {
-      weight: set?.value.toString(),
-      reps: set?.reps.toString(),
+      weight: prevSet?.value.toString() || set?.value.toString(),
+      reps: prevSet?.reps.toString() || set?.reps.toString(),
     },
   });
 
@@ -67,6 +69,8 @@ export const SetForm: React.FC<SetFormProps> = ({ exerciseItem, set, closeModal 
     closeModal && closeModal();
   };
 
+  const ref = useRef<TextFieldRef | null>(null);
+
   return (
     <FormProvider {...methods}>
       <View style={styles.container}>
@@ -78,12 +82,14 @@ export const SetForm: React.FC<SetFormProps> = ({ exerciseItem, set, closeModal 
             containerStyle={styles.weightInput}
             autoFocus={true}
             keyboardType={"number-pad"}
+            onEndEditing={() => ref.current?.focus()}
           />
           <TouchableOpacity style={styles.unitsButton}>
             <Text>KG</Text>
           </TouchableOpacity>
         </View>
         <TextInput
+          ref={ref}
           fontSize={16}
           name="reps"
           placeholder={locales.reps}

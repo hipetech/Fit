@@ -10,6 +10,7 @@ import type { WorkoutItem as WorkoutItemType } from "../../db/schemas/workoutIte
 import useStyles from "../../hooks/useStyles.ts";
 import useWorkout from "../../hooks/useWorkout.ts";
 import type { Colors } from "../../types/Colors.ts";
+import { HapticFeedback } from "../../utils/hapticFeedback.ts";
 import { selectForPlatform } from "../../utils/selectForPlatform.ts";
 import { AddSetModal } from "./components/addSetModal.tsx";
 import { EmptyWorkout } from "./components/emptyWorkout.tsx";
@@ -38,6 +39,8 @@ export const Workouts = () => {
   return (
     <>
       <DraggableFlatList
+        onDragBegin={() => HapticFeedback.heavyImpact()}
+        onPlaceholderIndexChange={() => HapticFeedback.lightImpact()}
         data={workoutItems as WorkoutItemType[]}
         onDragEnd={({ data }) => updateWorkout(data)}
         keyExtractor={(item) => item._id.toString()}

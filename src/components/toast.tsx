@@ -4,6 +4,7 @@ import { Toast as WixToast } from "react-native-ui-lib";
 
 import { AppEvents } from "../emmiter.ts";
 import useEmitter from "../hooks/useEmitter.ts";
+import { HapticFeedback } from "../utils/hapticFeedback.ts";
 
 type ToastConfig = {
   backgroundColor: string;
@@ -22,6 +23,7 @@ export const Toast = () => {
       duration,
     });
     setIsVisible(true);
+    HapticFeedback.lightImpact();
   };
 
   useEmitter(AppEvents.SHOW_TOAST, openToast);

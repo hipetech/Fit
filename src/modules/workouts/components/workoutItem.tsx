@@ -10,7 +10,6 @@ import type { WorkoutItem as WorkoutItemType } from "../../../db/schemas/workout
 import useStyles from "../../../hooks/useStyles.ts";
 import type { Colors } from "../../../types/Colors.ts";
 import { Text } from "../../../ui/text.tsx";
-import { HapticFeedback } from "../../../utils/hapticFeedback.ts";
 import { AddSetButton } from "./addSetButton.tsx";
 import { SetItem } from "./setItem.tsx";
 import { WorkoutItemMoreModal } from "./workoutItemMoreModal.tsx";
@@ -36,10 +35,7 @@ export const WorkoutItem = ({ item, drag, isActive, i18n, realm }: WorkoutItemPr
       <Pressable
         style={styles.workoutItem}
         delayLongPress={200}
-        onLongPress={() => {
-          HapticFeedback.mediumImpact();
-          drag();
-        }}
+        onLongPress={drag}
         disabled={isActive}
       >
         <Text fontSize={18}>{exercise.copies[language].title}</Text>

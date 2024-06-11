@@ -13,9 +13,9 @@
     },
     "toast": {
       "messages": {
-        "addSet": "Додано сет",
+        "addSet": "Додано підхід",
         "addExercise": "Додано вправу",
-        "deleteSet": "Видалено сет",
+        "deleteSet": "Видалено підхід",
         "deleteExercise": "Видалено вправу"
       }
     },
