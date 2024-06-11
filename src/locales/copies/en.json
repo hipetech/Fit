@@ -5,6 +5,13 @@
       "exercises": "Exercises",
       "settings": "Settings"
     },
+    "topDrawer": {
+      "currentWorkout": {
+        "sets": "{{value}} set",
+        "sets_plural": "{{value}} sets",
+        "exercises": "{{value}} ex."
+      }
+    },
     "workout": {
       "addSetModal": {
         "title": "Add set to exercise: {{value}}",

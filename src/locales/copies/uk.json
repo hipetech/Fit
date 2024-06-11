@@ -5,6 +5,12 @@
       "exercises": "Вправи",
       "settings": "Параметри"
     },
+    "topDrawer": {
+      "currentWorkout": {
+        "sets": "{{value}} під.",
+        "exercises": "{{value}} впр."
+      }
+    },
     "workout": {
       "addSetModal": {
         "title": "Додати підхід до вправи: {{value}}",
