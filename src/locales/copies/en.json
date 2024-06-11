@@ -12,6 +12,14 @@
         "exercises": "{{value}} ex."
       }
     },
+    "toast": {
+      "messages": {
+        "addSet": "Added set",
+        "addExercise": "Added Exercise",
+        "deleteSet": "Deleted set",
+        "deleteExercise": "Deleted exercise"
+      }
+    },
     "workout": {
       "addSetModal": {
         "title": "Add set to exercise: {{value}}",
@@ -21,7 +29,7 @@
           "reps": "Reps",
           "addSet": "Add set",
           "addEditedSet": "Save",
-          "removeSet": "Remove set"
+          "removeSet": "Delete set"
         }
       },
       "setItem": {

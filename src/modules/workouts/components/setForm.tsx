@@ -13,6 +13,7 @@ import type { Colors } from "../../../types/Colors.ts";
 import { Button } from "../../../ui/button.tsx";
 import { Text } from "../../../ui/text.tsx";
 import { TextInput } from "../../../ui/textInput.tsx";
+import { ShowToast } from "../../../utils/showToast.ts";
 
 type AddSetFormLocales = {
   weight: string;
@@ -49,11 +50,12 @@ export const SetForm: React.FC<SetFormProps> = ({ exerciseItem, set, closeModal 
     realm.write(() => {
       if (exerciseItem) {
         exerciseItem.sets.push(createSet(Number(data.weight), "kg", Number(data.reps)) as Set);
+        ShowToast.addSet();
       } else if (set) {
         set.value = Number(data.weight);
         set.reps = Number(data.reps);
-        closeModal && closeModal();
       }
+      closeModal && closeModal();
     });
   };
 
@@ -98,7 +100,10 @@ export const SetForm: React.FC<SetFormProps> = ({ exerciseItem, set, closeModal 
           <Button
             color={colors.red}
             label={locales.removeSet}
-            onPress={removeSet}
+            onPress={() => {
+              removeSet();
+              ShowToast.deleteSet();
+            }}
             style={styles.removeButton}
           />
         )}

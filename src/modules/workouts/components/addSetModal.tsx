@@ -35,7 +35,13 @@ export const AddSetModal = () => {
         setCurrentExerciseItem(null);
       }}
     >
-      <SetForm exerciseItem={currentExerciseItem} />
+      <SetForm
+        exerciseItem={currentExerciseItem}
+        closeModal={() => {
+          setIsVisible(false);
+          setCurrentExerciseItem(null);
+        }}
+      />
     </Dialog>
   );
 };

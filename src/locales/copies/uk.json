@@ -11,6 +11,14 @@
         "exercises": "{{value}} впр."
       }
     },
+    "toast": {
+      "messages": {
+        "addSet": "Додано сет",
+        "addExercise": "Додано вправу",
+        "deleteSet": "Видалено сет",
+        "deleteExercise": "Видалено вправу"
+      }
+    },
     "workout": {
       "addSetModal": {
         "title": "Додати підхід до вправи: {{value}}",

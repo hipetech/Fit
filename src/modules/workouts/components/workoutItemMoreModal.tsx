@@ -10,6 +10,7 @@ import useStyles from "../../../hooks/useStyles.ts";
 import { shadows } from "../../../styles/shadows.ts";
 import type { Colors } from "../../../types/Colors.ts";
 import { Text } from "../../../ui/text.tsx";
+import { ShowToast } from "../../../utils/showToast.ts";
 
 interface WorkoutItemMoreModalProps {
   workoutItem: WorkoutItem;
@@ -38,6 +39,8 @@ export const WorkoutItemMoreModal: React.FC<WorkoutItemMoreModalProps> = ({
       realm.delete(exerciseItems[0]);
       realm.delete(workoutItem);
     });
+
+    ShowToast.deleteExercise();
   };
 
   if (!isOpen) return null;

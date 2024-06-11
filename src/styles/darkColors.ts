@@ -4,7 +4,7 @@ export const darkColors: Colors = {
   black: "#1c1c1c",
   white: "#FFFFFF",
   orange: "#E47B05",
-  red: "#F20E0E",
+  red: "#d70000",
   yellow: "#EEF20E",
   green: "#2fad00",
   background: "#3d3d3d",

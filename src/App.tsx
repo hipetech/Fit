@@ -4,6 +4,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import SplashScreen from "react-native-splash-screen";
 
 import StatusBar from "./components/statusBar.tsx";
+import { Toast } from "./components/toast.tsx";
 import { RealmProvider } from "./db";
 import { bundleRealm } from "./db/bundle.ts";
 import { i18n } from "./locales/i18n.ts";
@@ -34,6 +35,7 @@ const App = () => {
 
   return (
     <GestureHandlerRootView style={styles.gestureContainer}>
+      <Toast />
       <StatusBar />
       <RealmProvider>
         <Navigation />

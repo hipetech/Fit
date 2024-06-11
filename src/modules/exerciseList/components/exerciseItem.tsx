@@ -18,6 +18,7 @@ import type { ExerciseNavigatorParamList } from "../../../types/ExerciseNavigato
 import type { Locale } from "../../../types/Locale.ts";
 import { Button } from "../../../ui/button.tsx";
 import { Text } from "../../../ui/text.tsx";
+import { ShowToast } from "../../../utils/showToast.ts";
 import { calculateExerciseCount } from "../utils/calculateExerciseCount.ts";
 
 interface ExerciseItemProps {
@@ -51,6 +52,8 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
         realm.create("Workout", createWorkout(date, [workoutItem]));
       }
     });
+
+    count < 1 && ShowToast.addExercise();
   };
 
   const removeExercise = () => {
@@ -81,6 +84,8 @@ export const ExerciseItem: React.FC<ExerciseItemProps> = ({
         });
       }
     }
+
+    count === 1 && ShowToast.deleteExercise();
   };
 
   return (
