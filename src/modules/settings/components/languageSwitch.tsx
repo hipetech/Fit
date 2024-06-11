@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { LocaleConfig } from "react-native-calendars/src";
 
 import { AsyncStorageValues } from "../../../asyncStorageValues.ts";
 import useLocales from "../../../hooks/useLocales.ts";
@@ -35,9 +36,10 @@ export const LanguageSwitch = () => {
   const handleLanguageChange = async (value: Locale) => {
     setLocale(value);
     const localeValue = value === "system" ? "" : value;
-    AsyncStorage.setItem(AsyncStorageValues.LANGUAGE, localeValue).then(() =>
-      i18n.changeLanguage(localeValue)
-    );
+    AsyncStorage.setItem(AsyncStorageValues.LANGUAGE, localeValue).then(() => {
+      i18n.changeLanguage(localeValue);
+      LocaleConfig.defaultLocale = localeValue;
+    });
   };
 
   return (
