@@ -1,3 +1,4 @@
+import type { i18n as I18nType } from "i18next";
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native-ui-lib";
@@ -13,6 +14,7 @@ import { Text } from "../../../ui/text.tsx";
 interface WorkoutItemMoreModalProps {
   workoutItem: WorkoutItem;
   realm: Realm;
+  i18n: I18nType;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -20,6 +22,7 @@ interface WorkoutItemMoreModalProps {
 export const WorkoutItemMoreModal: React.FC<WorkoutItemMoreModalProps> = ({
   workoutItem,
   realm,
+  i18n,
   isOpen,
   setIsOpen,
 }) => {
@@ -50,7 +53,7 @@ export const WorkoutItemMoreModal: React.FC<WorkoutItemMoreModalProps> = ({
           onPress={deleteWorkoutItem}
         >
           <DeleteIcon fill={colors.white} />
-          <Text>Remove</Text>
+          <Text>{i18n.t("workout.workoutItemMoreModal.delete")}</Text>
         </TouchableOpacity>
       </View>
     </Pressable>

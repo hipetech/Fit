@@ -20,7 +20,6 @@ import type { Colors } from "../../types/Colors.ts";
 import DragIsland from "../../ui/dragIsland.tsx";
 import TransparentView from "../../ui/transparentView.tsx";
 import { HapticFeedback } from "../../utils/hapticFeedback.ts";
-import { selectForPlatform } from "../../utils/selectForPlatform.ts";
 import { CurrentDate } from "./components/currentDate.tsx";
 import { CurrentWorkout } from "./components/currentWorkout.tsx";
 
@@ -187,8 +186,8 @@ const style = (colors: Colors) =>
     },
     content: {
       flex: 1,
-      paddingTop: selectForPlatform(630, 500),
       zIndex: 22,
+      paddingTop: "145%",
     },
     backdrop: {
       width: "100%",

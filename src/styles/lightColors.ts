@@ -6,8 +6,8 @@ export const lightColors: Colors = {
   orange: "#2caf18",
   red: "#F20E0E",
   yellow: "#EEF20E",
-  green: "#4AF20E",
+  green: "#2fad00",
   background: "#DCDCDC",
   transparent: "rgba(237,237,237,0.9)",
-  backdrop: "rgba(237,237,237,0.48)",
+  backdrop: "rgba(222,222,222,0.73)",
 };

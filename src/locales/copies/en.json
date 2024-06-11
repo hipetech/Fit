@@ -13,11 +13,16 @@
           "weight": "Weight",
           "reps": "Reps",
           "addSet": "Add set",
+          "addEditedSet": "Save",
           "removeSet": "Remove set"
         }
       },
       "setItem": {
-        "reps": "rep."
+        "reps": "rep.",
+        "addEditedSet":  "Save"
+      },
+      "workoutItemMoreModal": {
+        "delete": "Delete"
       }
     },
     "settings": {

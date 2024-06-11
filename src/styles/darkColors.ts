@@ -6,8 +6,8 @@ export const darkColors: Colors = {
   orange: "#E47B05",
   red: "#F20E0E",
   yellow: "#EEF20E",
-  green: "#4AF20E",
+  green: "#2fad00",
   background: "#3d3d3d",
   transparent: "rgba(26,26,26,0.97)",
-  backdrop: "rgba(26,26,26,0.5)",
+  backdrop: "rgba(40,40,40,0.71)",
 };

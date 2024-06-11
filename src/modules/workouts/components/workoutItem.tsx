@@ -61,6 +61,7 @@ export const WorkoutItem = ({ item, drag, isActive, i18n, realm }: WorkoutItemPr
         </TouchableOpacity>
         <WorkoutItemMoreModal
           realm={realm}
+          i18n={i18n}
           workoutItem={item}
           isOpen={isWorkoutItemMoreModalOpen}
           setIsOpen={setIsWorkoutItemMoreModalOpen}

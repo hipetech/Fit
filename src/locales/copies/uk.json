@@ -3,7 +3,7 @@
     "navigation": {
       "workouts": "Тренування",
       "exercises": "Вправи",
-      "settings": "Налаштування"
+      "settings": "Параметри"
     },
     "workout": {
       "addSetModal": {
@@ -13,11 +13,15 @@
           "weight": "Вага",
           "reps": "Повтори",
           "addSet": "Додати підхід",
+          "addEditedSet": "Зберегти",
           "removeSet": "Видалити підхід"
         }
       },
       "setItem": {
         "reps": "повт."
+      },
+      "workoutItemMoreModal": {
+        "delete": "Видалити"
       }
     },
     "settings": {

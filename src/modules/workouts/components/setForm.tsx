@@ -18,6 +18,7 @@ type AddSetFormLocales = {
   weight: string;
   reps: string;
   addSet: string;
+  addEditedSet: string;
   removeSet: string;
 };
 
@@ -51,6 +52,7 @@ export const SetForm: React.FC<SetFormProps> = ({ exerciseItem, set, closeModal 
       } else if (set) {
         set.value = Number(data.weight);
         set.reps = Number(data.reps);
+        closeModal && closeModal();
       }
     });
   };
@@ -68,21 +70,27 @@ export const SetForm: React.FC<SetFormProps> = ({ exerciseItem, set, closeModal 
       <View style={styles.container}>
         <View style={styles.inputRow}>
           <TextInput
+            fontSize={16}
             name="weight"
             placeholder={locales.weight}
             containerStyle={styles.weightInput}
+            autoFocus={true}
+            keyboardType={"number-pad"}
           />
           <TouchableOpacity style={styles.unitsButton}>
             <Text>KG</Text>
           </TouchableOpacity>
         </View>
         <TextInput
+          fontSize={16}
           name="reps"
           placeholder={locales.reps}
           containerStyle={styles.repsInput}
+          keyboardType={"number-pad"}
         />
         <Button
-          label={locales.addSet}
+          color={colors.green}
+          label={exerciseItem ? locales.addSet : locales.addEditedSet}
           onPress={methods.handleSubmit(onSubmit)}
           style={styles.submitButton}
         />
