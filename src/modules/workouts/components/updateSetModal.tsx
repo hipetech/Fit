@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Set } from "../../../db/schemas/set.ts";
-import { AppEmitter, AppEvents } from "../../../emmiter.ts";
+import { AppEvents } from "../../../emmiter.ts";
+import useEmmiter from "../../../hooks/useEmitter.ts";
 import { Dialog } from "../../../ui/dialog.tsx";
 import { SetForm } from "./setForm.tsx";
 
@@ -16,12 +17,7 @@ export const UpdateSetModal = () => {
     setExerciseSetData(set);
   };
 
-  useEffect(() => {
-    AppEmitter.addListener(AppEvents.OPEN_EDIT_SET_MODAL, toggleModal);
-    return () => {
-      AppEmitter.removeAllListeners(AppEvents.OPEN_EDIT_SET_MODAL);
-    };
-  }, []);
+  useEmmiter(AppEvents.OPEN_EDIT_SET_MODAL, toggleModal);
 
   if (!exerciseSetData) return null;
 

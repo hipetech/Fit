@@ -1,58 +1,71 @@
 import type { i18n as I18nType } from "i18next";
-import React from "react";
+import React, { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import { type RenderItemParams, ScaleDecorator } from "react-native-draggable-flatlist";
-import Animated from "react-native-reanimated";
+import { TouchableOpacity } from "react-native-ui-lib";
+import { Realm } from "realm";
 
+import MoreIcon from "../../../assets/icons/more.svg";
 import type { WorkoutItem as WorkoutItemType } from "../../../db/schemas/workoutItem.ts";
 import useStyles from "../../../hooks/useStyles.ts";
 import type { Colors } from "../../../types/Colors.ts";
-import DragIsland from "../../../ui/dragIsland.tsx";
 import { Text } from "../../../ui/text.tsx";
+import { HapticFeedback } from "../../../utils/hapticFeedback.ts";
 import { AddSetButton } from "./addSetButton.tsx";
 import { SetItem } from "./setItem.tsx";
+import { WorkoutItemMoreModal } from "./workoutItemMoreModal.tsx";
 
 const ACTIVE_SCALE = 1.015;
 
 type WorkoutItemProps = RenderItemParams<WorkoutItemType> & {
   i18n: I18nType;
+  realm: Realm;
 };
 
-export const WorkoutItem = ({ item, drag, isActive, i18n }: WorkoutItemProps) => {
-  const { styles } = useStyles(style);
+export const WorkoutItem = ({ item, drag, isActive, i18n, realm }: WorkoutItemProps) => {
+  const { styles, colors } = useStyles(style);
   const { language } = i18n;
-  const { exerciseItems } = item;
-  const [exerciseItem] = exerciseItems;
-  const { exercise } = exerciseItem;
+  const { exerciseItems } = item || {};
+  const [exerciseItem] = exerciseItems || [];
+  const { exercise } = exerciseItem || {};
+
+  const [isWorkoutItemMoreModalOpen, setIsWorkoutItemMoreModalOpen] = useState(false);
 
   return (
     <ScaleDecorator activeScale={ACTIVE_SCALE}>
-      <Animated.View style={styles.workoutItem}>
-        <Pressable
-          onLongPress={drag}
-          disabled={isActive}
-        >
-          <View style={styles.dragIslandContainer}>
-            <DragIsland
-              size={40}
-              vertical={true}
+      <Pressable
+        style={styles.workoutItem}
+        delayLongPress={200}
+        onLongPress={() => {
+          HapticFeedback.mediumImpact();
+          drag();
+        }}
+        disabled={isActive}
+      >
+        <Text fontSize={18}>{exercise.copies[language].title}</Text>
+        <View style={styles.setItems}>
+          {exerciseItem.sets.map((set) => (
+            <SetItem
+              i18n={i18n}
+              set={set}
+              key={set._id.toString()}
             />
-          </View>
-        </Pressable>
-        <View style={styles.itemContent}>
-          <Text fontSize={18}>{exercise.copies[language].title}</Text>
-          <View style={styles.setItems}>
-            {exerciseItem.sets.map((set) => (
-              <SetItem
-                i18n={i18n}
-                set={set}
-                key={set._id.toString()}
-              />
-            ))}
-            <AddSetButton exerciseItem={exerciseItem} />
-          </View>
+          ))}
+          <AddSetButton exerciseItem={exerciseItem} />
         </View>
-      </Animated.View>
+        <TouchableOpacity
+          style={styles.more}
+          onPress={() => setIsWorkoutItemMoreModalOpen(true)}
+        >
+          <MoreIcon fill={colors.white} />
+        </TouchableOpacity>
+        <WorkoutItemMoreModal
+          realm={realm}
+          workoutItem={item}
+          isOpen={isWorkoutItemMoreModalOpen}
+          setIsOpen={setIsWorkoutItemMoreModalOpen}
+        />
+      </Pressable>
     </ScaleDecorator>
   );
 };
@@ -65,24 +78,18 @@ const style = (colors: Colors) =>
       backgroundColor: colors.black,
       marginBottom: 10,
       padding: 20,
-      flexDirection: "row",
-      alignItems: "center",
-      paddingHorizontal: 0,
-    },
-    dragIslandContainer: {
-      justifyContent: "center",
-      paddingHorizontal: 20,
+      alignItems: "flex-start",
+      position: "relative",
     },
     setItems: {
-      width: "100%",
       marginTop: 10,
       flexDirection: "row",
       gap: 10,
       flexWrap: "wrap",
     },
-    itemContent: {
-      flex: 1,
-      height: "100%",
-      marginRight: 20,
+    more: {
+      position: "absolute",
+      right: 15,
+      top: 0,
     },
   });

@@ -41,6 +41,7 @@ export const Workouts = () => {
         renderItem={({ ...props }) => (
           <WorkoutItem
             i18n={i18n}
+            realm={realm}
             {...props}
           />
         )}

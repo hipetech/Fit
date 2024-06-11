@@ -1,4 +1,4 @@
-import React, { type ReactNode, useEffect } from "react";
+import React, { type ReactNode } from "react";
 import { StyleSheet, View, type ViewProps } from "react-native";
 import DeviceInfo from "react-native-device-info";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
@@ -13,7 +13,8 @@ import Animated, {
 } from "react-native-reanimated";
 
 import { SCREEN_HEIGHT, WINDOW_HEIGHT } from "../../constants.ts";
-import { AppEmitter, AppEvents } from "../../emmiter.ts";
+import { AppEvents } from "../../emmiter.ts";
+import useEmmiter from "../../hooks/useEmitter.ts";
 import useStyles from "../../hooks/useStyles.ts";
 import type { Colors } from "../../types/Colors.ts";
 import DragIsland from "../../ui/dragIsland.tsx";
@@ -126,11 +127,7 @@ const TopDrawer: React.FC<TopDrawerProps> = ({ children }) => {
     runOnJS(gestureImpact)();
   });
 
-  useEffect(() => {
-    AppEmitter.addListener(AppEvents.OPEN_DRAWER, toggleDrawer);
-    return () => AppEmitter.removeAllListeners(AppEvents.OPEN_DRAWER);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useEmmiter(AppEvents.OPEN_DRAWER, toggleDrawer);
 
   return (
     <>

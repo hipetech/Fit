@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import type { ExerciseItem } from "../../../db/schemas/exerciseItem.ts";
-import { AppEmitter, AppEvents } from "../../../emmiter.ts";
+import { AppEvents } from "../../../emmiter.ts";
+import useEmmiter from "../../../hooks/useEmitter.ts";
 import { Dialog } from "../../../ui/dialog.tsx";
 import { SetForm } from "./setForm.tsx";
 
@@ -19,12 +20,7 @@ export const AddSetModal = () => {
     setCurrentExerciseItem(exerciseItem);
   };
 
-  useEffect(() => {
-    AppEmitter.addListener(AppEvents.OPEN_ADD_SET_MODAL, toggleModal);
-    return () => {
-      AppEmitter.removeAllListeners(AppEvents.OPEN_ADD_SET_MODAL);
-    };
-  }, []);
+  useEmmiter(AppEvents.OPEN_ADD_SET_MODAL, toggleModal);
 
   if (!currentExerciseItem) return null;
 
@@ -34,7 +30,10 @@ export const AddSetModal = () => {
         value: currentExerciseItem?.exercise.copies[language].title,
       })}
       visible={isVisible}
-      onDismiss={() => setIsVisible(false)}
+      onDismiss={() => {
+        setIsVisible(false);
+        setCurrentExerciseItem(null);
+      }}
     >
       <SetForm exerciseItem={currentExerciseItem} />
     </Dialog>
