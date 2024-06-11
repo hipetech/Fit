@@ -81,6 +81,7 @@ const style = (color: Colors) =>
     },
     contentContainer: {
       paddingTop: 200,
+      paddingBottom: 150,
       paddingHorizontal: 10,
       gap: 10,
     },
