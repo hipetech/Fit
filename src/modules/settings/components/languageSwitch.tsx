@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LocaleConfig } from "react-native-calendars/src";
 
+import LanguageIcon from "../../../assets/icons/languageIcon.svg";
 import { AsyncStorageValues } from "../../../asyncStorageValues.ts";
 import useLocales from "../../../hooks/useLocales.ts";
 import type { Locale } from "../../../types/Locale.ts";
 import { Dialog } from "../../../ui/dialog.tsx";
 import { RadioButton } from "../../../ui/radioButton.tsx";
 import { RadioGroup } from "../../../ui/radioGroup.tsx";
-import LanguageIcon from "./../assets/languageIcon.svg";
 import { SettingsItem } from "./settingsItem.tsx";
 
 type LanguageSwitchTranslations = {

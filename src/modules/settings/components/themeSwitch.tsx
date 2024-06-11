@@ -2,13 +2,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 import { Appearance, type ColorSchemeName } from "react-native";
 
+import AppearanceIcon from "../../../assets/icons/appearanceIcon.svg";
 import { AsyncStorageValues } from "../../../asyncStorageValues.ts";
 import useLocales from "../../../hooks/useLocales.ts";
 import { useAppearanceStore } from "../../../store/appearanceStore.ts";
 import { Dialog } from "../../../ui/dialog.tsx";
 import { RadioButton } from "../../../ui/radioButton.tsx";
 import { RadioGroup } from "../../../ui/radioGroup.tsx";
-import AppearanceIcon from "./../assets/appearanceIcon.svg";
 import { SettingsItem } from "./settingsItem.tsx";
 
 type ThemeSwitchTranslations = {

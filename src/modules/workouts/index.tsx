@@ -12,6 +12,7 @@ import useWorkout from "../../hooks/useWorkout.ts";
 import type { Colors } from "../../types/Colors.ts";
 import { selectForPlatform } from "../../utils/selectForPlatform.ts";
 import { AddSetModal } from "./components/addSetModal.tsx";
+import { EmptyWorkout } from "./components/emptyWorkout.tsx";
 import { UpdateSetModal } from "./components/updateSetModal.tsx";
 import { WorkoutItem } from "./components/workoutItem.tsx";
 
@@ -31,6 +32,8 @@ export const Workouts = () => {
       });
     }
   };
+
+  if (!workout || !workout.workoutItems.length) return <EmptyWorkout />;
 
   return (
     <>

@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import i18n, { type LanguageDetectorAsyncModule } from "i18next";
 import { initReactI18next } from "react-i18next";
+import { LocaleConfig } from "react-native-calendars/src";
 import { getLocales } from "react-native-localize";
 
 import { AsyncStorageValues } from "../asyncStorageValues.ts";
@@ -17,6 +18,7 @@ const asyncStorageLanguageDetector: LanguageDetectorAsyncModule = {
     const savedLocale =
       (await AsyncStorage.getItem(AsyncStorageValues.LANGUAGE)) || getLocales()[0].languageCode;
     callback(savedLocale);
+    LocaleConfig.defaultLocale = savedLocale;
     return savedLocale;
   },
 };
