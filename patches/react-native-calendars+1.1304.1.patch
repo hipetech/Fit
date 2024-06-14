@@ -1,0 +1,23 @@
+diff --git a/node_modules/react-native-calendars/src/calendar-list/index.js b/node_modules/react-native-calendars/src/calendar-list/index.js
+index e0449bc..9b6a673 100644
+--- a/node_modules/react-native-calendars/src/calendar-list/index.js
++++ b/node_modules/react-native-calendars/src/calendar-list/index.js
+@@ -2,7 +2,7 @@ import findIndex from 'lodash/findIndex';
+ import PropTypes from 'prop-types';
+ import XDate from 'xdate';
+ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+-import { FlatList, View } from 'react-native';
++import { View } from 'react-native';
+ import { extractCalendarProps, extractHeaderProps } from '../componentUpdater';
+ import { parseDate, toMarkingFormat, xdateToData } from '../interface';
+ import { page, sameDate, sameMonth } from '../dateutils';
+@@ -13,6 +13,9 @@ import Calendar from '../calendar';
+ import CalendarListItem from './item';
+ import CalendarHeader from '../calendar/header/index';
+ import isEqual from 'lodash/isEqual';
++
++import {FlatList} from "react-native-gesture-handler";
++
+ const CALENDAR_WIDTH = constants.screenWidth;
+ const CALENDAR_HEIGHT = 360;
+ const PAST_SCROLL_RANGE = 50;
