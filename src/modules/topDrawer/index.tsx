@@ -1,6 +1,5 @@
 import React, { type ReactNode } from "react";
 import { StyleSheet, View, type ViewProps } from "react-native";
-import DeviceInfo from "react-native-device-info";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   interpolate,
@@ -20,8 +19,10 @@ import type { Colors } from "../../types/Colors.ts";
 import DragIsland from "../../ui/dragIsland.tsx";
 import TransparentView from "../../ui/transparentView.tsx";
 import { HapticFeedback } from "../../utils/hapticFeedback.ts";
+import { selectForPlatform } from "../../utils/selectForPlatform.ts";
 import { CurrentDate } from "./components/currentDate.tsx";
 import { CurrentWorkout } from "./components/currentWorkout.tsx";
+import { renderTopDrawerOpenedPosition } from "./utils/renderTopDrawerOpenedPosition.ts";
 
 const SPRING_CONFIG = {
   duration: 950,
@@ -35,8 +36,8 @@ const SPRING_CONFIG = {
 
 const DRAWER_HEIGHT = WINDOW_HEIGHT * 1.2;
 
-const DRAWER_CLOSED_POSITION = -DRAWER_HEIGHT * (DeviceInfo.hasNotch() ? 0.9 : 0.94);
-const DRAWER_OPENED_POSITION = -(WINDOW_HEIGHT * 0.6);
+const DRAWER_CLOSED_POSITION = -DRAWER_HEIGHT * selectForPlatform(0.9, 0.95);
+const DRAWER_OPENED_POSITION = renderTopDrawerOpenedPosition();
 
 const QUICK_OPEN_VELOCITY = 3000;
 const OPEN_POINT = 750;
@@ -187,7 +188,8 @@ const style = (colors: Colors) =>
     content: {
       flex: 1,
       zIndex: 22,
-      paddingTop: "145%",
+      justifyContent: "flex-end",
+      paddingBottom: 15,
     },
     backdrop: {
       width: "100%",
