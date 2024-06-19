@@ -11,7 +11,6 @@ import useStyles from "../../hooks/useStyles.ts";
 import useWorkout from "../../hooks/useWorkout.ts";
 import type { Colors } from "../../types/Colors.ts";
 import { HapticFeedback } from "../../utils/hapticFeedback.ts";
-import { selectForPlatform } from "../../utils/selectForPlatform.ts";
 import { AddSetModal } from "./components/addSetModal.tsx";
 import { EmptyWorkout } from "./components/emptyWorkout.tsx";
 import { UpdateSetModal } from "./components/updateSetModal.tsx";
@@ -70,7 +69,7 @@ const style = (colors: Colors) =>
     },
     contentContainer: {
       backgroundColor: colors.background,
-      paddingVertical: selectForPlatform(CONTENT_PADDING_TOP, 70),
+      paddingVertical: CONTENT_PADDING_TOP,
       paddingHorizontal: 8,
     },
     rowItem: {
