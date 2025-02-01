@@ -8,12 +8,3 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
-
--keepclassmembers class com.android.installreferrer.api.** {
-  *;
-}
-
-# realm
--keep class io.realm.react.**
-
--keep class com.google.android.gms.common.** {*;}

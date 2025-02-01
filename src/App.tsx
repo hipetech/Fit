@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import SplashScreen from "react-native-splash-screen";
 
 import StatusBar from "./components/statusBar.tsx";
 import { Toast } from "./components/toast.tsx";
@@ -16,7 +15,6 @@ const App = () => {
   useEffect(() => {
     const toggleInit = () => {
       setIsI18nInitialized(true);
-      SplashScreen.hide();
     };
     i18n.on("initialized", toggleInit);
     return () => {
@@ -25,9 +23,9 @@ const App = () => {
   }, []);
 
   // bundle realm on app start
-  useEffect(() => {
-    (async () => await bundleRealm())();
-  }, []);
+  // useEffect(() => {
+  //   (async () => await bundleRealm())();
+  // }, []);
 
   if (!isI18nInitialized) {
     return null;
