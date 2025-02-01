@@ -11,6 +11,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		16DFAF9D12CF4C40B61D9DB3 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBD35E102E1C4F1CBEC31CA8 /* Roboto-Thin.ttf */; };
 		3AC9DF4DA59F212587C1DA87 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		5C7F4362EA56D6666A847E59 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31962DE6706F2345E0A847F7 /* ExpoModulesProvider.swift */; };
 		60836F2345BB44AB801B27CA /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEFD42963F8A4FBEAA49A501 /* Roboto-Bold.ttf */; };
 		66D6E88A29DF4DCBA80094D2 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9910F477C5B143FF95B9AD3A /* Roboto-Regular.ttf */; };
 		7400A788A92447A4A8A3D5A9 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11B72E4517E74DEC9C2E9432 /* Roboto-Light.ttf */; };
@@ -25,6 +26,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Fit/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Fit/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = Fit/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		31962DE6706F2345E0A847F7 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Fit/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Fit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit.debug.xcconfig"; path = "Target Support Files/Pods-Fit/Pods-Fit.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Fit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit.release.xcconfig"; path = "Target Support Files/Pods-Fit/Pods-Fit.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Fit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +72,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2E7C54E0F57D36B6CF6AB667 /* Fit */ = {
+			isa = PBXGroup;
+			children = (
+				31962DE6706F2345E0A847F7 /* ExpoModulesProvider.swift */,
+			);
+			name = Fit;
+			sourceTree = "<group>";
+		};
 		4BF87182304C4C40ACAFCF4E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
 				4BF87182304C4C40ACAFCF4E /* Resources */,
+				A777F463E452D192A535B1DD /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -111,6 +122,14 @@
 				13B07F961A680F5B00A75B9A /* Fit.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A777F463E452D192A535B1DD /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				2E7C54E0F57D36B6CF6AB667 /* Fit */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -130,6 +149,7 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Fit" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				8C3DDE4090DF594C4BAE0698 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -229,6 +249,25 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fit/Pods-Fit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8C3DDE4090DF594C4BAE0698 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-Fit/expo-configure-project.sh\"\n";
+		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
+				5C7F4362EA56D6666A847E59 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +342,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Fit;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -329,6 +370,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Fit;
 				SWIFT_VERSION = 5.0;
@@ -412,6 +454,7 @@
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_VERSION = 5.0;
 				USE_HERMES = true;
 			};
 			name = Debug;
@@ -483,6 +526,7 @@
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
 				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
